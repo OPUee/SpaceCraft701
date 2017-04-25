@@ -19,6 +19,10 @@ public class LowBobRuntime extends KeyAdapter implements Runnable {
         this.lbp = lbp;
     }
 
+    public void addSprite(LowBobSprite sprite) {
+        this.lbp.addSprite(sprite);
+    }
+
     private void update(ArrayList<LowBobSprite> sprites) {
         if (sprites == null)
             return;
@@ -28,10 +32,6 @@ public class LowBobRuntime extends KeyAdapter implements Runnable {
 
             // move sprite
             sprite.move();
-
-            // iterate through scene
-            update(sprite.getSprites());
-
         }
     }
 
@@ -77,8 +77,6 @@ public class LowBobRuntime extends KeyAdapter implements Runnable {
             LowBobSprite sprite = s.next();
 
             sprite.keyPressed(keyEvent);
-
-            keyPressed(keyEvent, sprite.getSprites());
         }
     }
 
@@ -95,8 +93,6 @@ public class LowBobRuntime extends KeyAdapter implements Runnable {
             LowBobSprite sprite = s.next();
 
             sprite.keyReleased(keyEvent);
-
-            keyReleased(keyEvent, sprite.getSprites());
         }
     }
 }

@@ -30,9 +30,6 @@ public abstract class LowBobPanel extends JPanel {
             // draw sprite
             g.drawImage(sprite.getImage(), (int)sprite.getPosX(), (int)sprite.getPosY(), this);
             Toolkit.getDefaultToolkit().sync();
-
-            // iterate through sceen
-            draw(g, sprite.getSprites());
         }
     }
 
