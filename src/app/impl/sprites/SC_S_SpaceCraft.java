@@ -33,6 +33,10 @@ public class SC_S_SpaceCraft extends LowBobSprite{
         fired = true;
     }
 
+    private void laser() {
+        LowBobRuntime.getInstance().addSprite(new SC_S_laser(this.x + 30, this.y + 20, 8, 2));
+    }
+
     @Override
     public void loadImage() {
         this.img = new ImageIcon("src/app/resources/spacecraft.png").getImage();
@@ -78,6 +82,9 @@ public class SC_S_SpaceCraft extends LowBobSprite{
             case KeyEvent.VK_SPACE:
                 if(!fired)
                 fire();
+                break;
+            case KeyEvent.VK_M:
+                laser();
                 break;
         }
     }

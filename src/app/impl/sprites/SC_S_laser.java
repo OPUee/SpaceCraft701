@@ -1,7 +1,5 @@
 package app.impl.sprites;
 
-import lowbob.LowBobCollider;
-import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 
 import javax.swing.*;
@@ -10,26 +8,22 @@ import java.awt.event.KeyEvent;
 /**
  * Created by opuee on 27.04.17.
  */
-public class SC_S_Alien extends LowBobSprite {
+public class SC_S_laser extends LowBobSprite {
 
+    private int SPEED = 20;
 
-    public SC_S_Alien(double x, double y, double width, double height) {
+    public SC_S_laser(double x, double y, double width, double height) {
         super(x, y, width, height);
-
-        this.colliders.add(new LowBobCollider(SC_S_Missile.class));
-        this.colliders.add(new LowBobCollider(SC_S_laser.class));
     }
 
     @Override
     public void loadImage() {
-        this.img = new ImageIcon("src/app/resources/alien.png").getImage();
+        this.img = new ImageIcon("src/app/resources/laser_red.png").getImage();
     }
 
     @Override
     public void move() {
-
-        this.x -= 2;
-
+        x += SPEED;
     }
 
     @Override
@@ -44,6 +38,6 @@ public class SC_S_Alien extends LowBobSprite {
 
     @Override
     public void collide(LowBobSprite lbs) {
-        LowBobRuntime.getInstance().removeSprite(this);
+
     }
 }
