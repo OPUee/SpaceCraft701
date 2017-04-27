@@ -1,6 +1,8 @@
 package app;
 
 import app.impl.panels.SC_P_Debug;
+import app.impl.sprites.SC_S_Missile;
+import lowbob.LowBobCollider;
 import lowbob.LowBobPanel;
 import lowbob.LowBobRuntime;
 
@@ -32,6 +34,11 @@ public class SpaceCraft701 extends JFrame {
 
     public static void main(String[] args) {
 
+        initSC107();
+
+    }
+
+    private static void initSC107() {
         LowBobRuntime runtime = LowBobRuntime.getInstance();
 
         SpaceCraft701 app = new SpaceCraft701();
@@ -46,7 +53,6 @@ public class SpaceCraft701 extends JFrame {
         panel.addKeyListener(runtime);
 
         thread.start();
-
     }
 
 }

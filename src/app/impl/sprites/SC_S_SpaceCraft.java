@@ -1,5 +1,6 @@
 package app.impl.sprites;
 
+import lowbob.LowBobCollider;
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 
@@ -16,8 +17,10 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
     private boolean up, down, fired;
 
-    public SC_S_SpaceCraft(int x, int y) {
-        super(x, y);
+    public SC_S_SpaceCraft(int x, int y, int width, int height) {
+        super(x, y, width, height);
+
+        this.colliders.add(new LowBobCollider(SC_S_Alien.class));
 
         // initialize member
         up = false;
@@ -26,7 +29,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
     }
 
     public void fire() {
-        LowBobRuntime.getInstance().addSprite(new SC_S_Missile(this.x, this.y));
+        LowBobRuntime.getInstance().addSprite(new SC_S_Missile(this.x, this.y, 32, 16));
         fired = true;
     }
 
@@ -89,5 +92,10 @@ public class SC_S_SpaceCraft extends LowBobSprite{
             case KeyEvent.VK_SPACE:
                 fired = false;
         }
+    }
+
+    @Override
+    public void collide(LowBobSprite lbs) {
+        System.out.println("intersection");
     }
 }

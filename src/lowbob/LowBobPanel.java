@@ -17,7 +17,7 @@ public abstract class LowBobPanel extends JPanel {
         setFocusable(true);
         setDoubleBuffered(true);
 
-        this.sprites = null;
+        this.sprites = new ArrayList<>();
     }
 
     private void draw(Graphics g, ArrayList<LowBobSprite> sprites) {
@@ -41,10 +41,11 @@ public abstract class LowBobPanel extends JPanel {
 
     // getter and setter
     public void addSprite(LowBobSprite lbs) {
-        if (this.sprites == null)
-            this.sprites = new ArrayList<>();
-
         this.sprites.add(lbs);
+    }
+
+    public void removeSprite(LowBobSprite lbs) {
+        this.sprites.remove(lbs);
     }
 
     public ArrayList<LowBobSprite> getSprites() {

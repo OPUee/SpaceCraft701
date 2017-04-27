@@ -13,8 +13,8 @@ public class SC_S_Missile extends LowBobSprite {
     private final int SPEED = 15;
     private final double ACCELE = .3;
 
-    public SC_S_Missile(double x, double y) {
-        super(x,y);
+    public SC_S_Missile(double x, double y, double width, double height) {
+        super(x,y,width,height);
     }
 
     @Override
@@ -38,6 +38,11 @@ public class SC_S_Missile extends LowBobSprite {
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
+
+    }
+
+    @Override
+    public void collide(LowBobSprite lbs) {
 
     }
 }
