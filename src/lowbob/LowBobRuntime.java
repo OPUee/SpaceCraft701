@@ -11,11 +11,21 @@ import java.util.Iterator;
  */
 public class LowBobRuntime extends KeyAdapter implements Runnable {
 
-    private final int DELAY = 25;
+    private static LowBobRuntime instance = null;
 
+    private final int DELAY = 25;
     private LowBobPanel lbp;
 
-    public LowBobRuntime(LowBobPanel lbp) {
+    // Singleton impl
+    public static LowBobRuntime getInstance() {
+        if(instance == null)
+            instance = new LowBobRuntime();
+
+        return instance;
+    }
+    private LowBobRuntime() {}
+
+    public void setLBP(LowBobPanel lbp) {
         this.lbp = lbp;
     }
 
