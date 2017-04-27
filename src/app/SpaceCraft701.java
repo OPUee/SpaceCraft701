@@ -32,10 +32,13 @@ public class SpaceCraft701 extends JFrame {
 
     public static void main(String[] args) {
 
+        LowBobRuntime runtime = LowBobRuntime.getInstance();
+
         SpaceCraft701 app = new SpaceCraft701();
         LowBobPanel panel = new SC_P_Debug();
-        LowBobRuntime runtime = new LowBobRuntime(panel);
         Thread thread = new Thread(runtime);
+
+        runtime.setLBP(panel);
 
         app.setPanel(panel);
         app.setVisible(true);

@@ -1,5 +1,6 @@
 package app.impl.sprites;
 
+import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 
 import javax.swing.*;
@@ -25,7 +26,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
     }
 
     public void fire() {
-        this.addSprite(new SC_S_Missile(this.x+25, this.y+18));
+        LowBobRuntime.getInstance().addSprite(new SC_S_Missile(this.x, this.y));
         fired = true;
     }
 
