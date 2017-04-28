@@ -27,9 +27,7 @@ public class SC_S_Alien extends LowBobSprite {
 
     @Override
     public void move() {
-
         this.x -= 2;
-
     }
 
     @Override
@@ -44,6 +42,8 @@ public class SC_S_Alien extends LowBobSprite {
 
     @Override
     public void collide(LowBobSprite lbs) {
-        LowBobRuntime.getInstance().removeSprite(this);
+        LowBobRuntime runtime = LowBobRuntime.getInstance();
+        runtime.removeSprite(this);
+        runtime.removeSprite(lbs);
     }
 }
