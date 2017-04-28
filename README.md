@@ -1,20 +1,34 @@
 # SpaceCraft701 #
 
 ## The Project ##
-The actual purpose of the project is to create a really simple and basic game
-engine for 2D Games. But on that way I also want to develop a medium sized 
-arcade shooting game, playing in space. Call this SpaceCraft701.
+The actual purpose of the project is to create a medium sized 2D arcade shooting
+game, playing in space. But on that way I also want to give a try on abstracting 
+some basic functionality and create a really basic and rudimentary game engine
 
 ## The Story ##
 coming soon  
 
 ## Features ##
+
+### Engine ###
+- runtime engine for updateing scene
+- prepared panels meant to be screnes
+- sprite abstraction to simply create in-game objects
+- relative layout in scene and sprites
+- collider objects for an efficient collision detection
+- predefined animator classes to create fancy looking 2D animations
+
+### Game ###
+- little technical preview
+
+## Comming up ##
+
 ### Engine ###
 - simple specialisation of the LowBobSprite class to UI Elements.
 - rudimentary implementation of "kind of illumination" points for a fancy look.
 - possibility to play sounds.
 
-### Technical Preview ###
+### Game ###
 - animation of the background (could be a issue for the engine).
 - apply explosion animations on destroied alien ships.
 - advanced steering for players spacecraft.
