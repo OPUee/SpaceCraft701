@@ -26,12 +26,12 @@ public class SC_P_Debug extends LowBobPanel {
 
         // add spacecraft player
         SC_S_SpaceCraft player = new SC_S_SpaceCraft(40,120, 50, 30);
+        player.addSprite(new SC_S_Thurster(-16, 18, 15, 7));
         this.addSprite(player);
-        this.addSprite(new SC_S_Thurster(-16, 18, 15, 7, player));
         
         // add alien enemy
         SC_S_Alien alien = new SC_S_Alien(1000, 400, 50, 26);
+        alien.addSprite(new SC_S_Alien_Thurster(45, 8, 20, 14, alien));
         this.addSprite(alien);
-        this.addSprite(new SC_S_Alien_Thurster(45, 8, 20, 14, alien));
     }
 }

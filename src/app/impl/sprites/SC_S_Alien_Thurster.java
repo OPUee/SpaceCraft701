@@ -9,17 +9,11 @@ import lowbob.util.ImageCreator;
 public class SC_S_Alien_Thurster extends LowBobSprite {
 
 	private ImageAnimator ai_thurster;
-	private LowBobSprite parent;
 	private int ai_counter;
-	private double xOffset, yOffset;
 	
 	public SC_S_Alien_Thurster(double x, double y, double width, double height, LowBobSprite parent) {
 		super(x, y, width, height);
-		
-		this.xOffset = x;
-		this.yOffset = y;
 		this.ai_counter = 0;
-		this.parent = parent;
 	}
 
 	@Override
@@ -29,10 +23,7 @@ public class SC_S_Alien_Thurster extends LowBobSprite {
 	}
 
 	@Override
-	public void move() {			
-		x = parent.getPosX() + xOffset;
-		y = parent.getPosY() + yOffset;
-		
+	public void move() {		
 		ai_counter++;
 		// update image
 		if(ai_counter > 1000)
