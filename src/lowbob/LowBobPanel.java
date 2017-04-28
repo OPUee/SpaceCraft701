@@ -19,7 +19,7 @@ public abstract class LowBobPanel extends JPanel {
         this.sprites = new ArrayList<>();
     }
 
-    private void draw(Graphics g, ArrayList<LowBobSprite> sprites) {
+    private void draw(Graphics g, ArrayList<LowBobSprite> sprites, double x, double y) {
         if (sprites == null)
             return;
 
@@ -27,15 +27,17 @@ public abstract class LowBobPanel extends JPanel {
             LowBobSprite sprite = s.next();
 
             // draw sprite
-            g.drawImage(sprite.getImage(), (int)sprite.getPosX(), (int)sprite.getPosY(), this);
+            g.drawImage(sprite.getImage(), (int)(sprite.getPosX() + x), (int)(sprite.getPosY() + y), this);
             Toolkit.getDefaultToolkit().sync();
+            
+            draw(g, sprite.getSprites(), sprite.getPosX(), sprite.getPosY());
         }
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        draw(g, this.sprites);
+        draw(g, this.sprites, 0.0f, 0.0f);
     }
 
     // getter and setter

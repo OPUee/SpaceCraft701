@@ -12,6 +12,7 @@ public abstract class LowBobSprite {
 
     protected BufferedImage img;
     protected double x, y, vx, vy, width, height;
+    protected ArrayList<LowBobSprite> sprites;
     protected ArrayList<LowBobCollider> colliders;
 
     public LowBobSprite(double x, double y, double width, double height) {
@@ -22,6 +23,7 @@ public abstract class LowBobSprite {
         this.width = width;
         this.height = height;
         colliders = new ArrayList<>();
+        sprites = new ArrayList<>();
     }
 
     public abstract void loadImage();
@@ -31,6 +33,9 @@ public abstract class LowBobSprite {
     public abstract void collide(LowBobSprite lbs);
 
     // getter and setter
+    public void addSprite(LowBobSprite lbs) {
+    	this.sprites.add(lbs);
+    }
     public double getPosX() {
         return this.x;
     }
@@ -43,4 +48,5 @@ public abstract class LowBobSprite {
         return this.img;
     }
     public ArrayList<LowBobCollider> getColliders() { return this.colliders; }
+    public ArrayList<LowBobSprite> getSprites() { return this.sprites; }
 }

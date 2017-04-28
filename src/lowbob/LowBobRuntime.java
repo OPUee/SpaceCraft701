@@ -37,6 +37,7 @@ public class LowBobRuntime extends KeyAdapter implements Runnable {
             LowBobSprite sprite = s.next();
 
             sprite.move();
+            update(sprite.getSprites());
         }
     }
 
