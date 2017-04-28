@@ -3,9 +3,9 @@ package app.impl.sprites;
 import lowbob.LowBobCollider;
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
+import lowbob.util.ImageCreator;
 import lowbob.util.ValueAnimator;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -27,7 +27,7 @@ public class SC_S_Star extends LowBobSprite{
 
     @Override
     public void loadImage() {
-        this.img = new ImageIcon("src/app/resources/star.png").getImage();
+    	this.img = ImageCreator.create("src/app/resources/star.png");
     }
 
     @Override

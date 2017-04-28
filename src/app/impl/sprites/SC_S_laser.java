@@ -1,8 +1,8 @@
 package app.impl.sprites;
 
 import lowbob.LowBobSprite;
+import lowbob.util.ImageCreator;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -18,7 +18,7 @@ public class SC_S_laser extends LowBobSprite {
 
     @Override
     public void loadImage() {
-        this.img = new ImageIcon("src/app/resources/laser_red.png").getImage();
+    	this.img = ImageCreator.create("src/app/resources/laser_red.png");
     }
 
     @Override

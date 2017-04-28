@@ -3,8 +3,8 @@ package app.impl.sprites;
 import lowbob.LowBobCollider;
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
+import lowbob.util.ImageCreator;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -22,7 +22,7 @@ public class SC_S_Alien extends LowBobSprite {
 
     @Override
     public void loadImage() {
-        this.img = new ImageIcon("src/app/resources/alien.png").getImage();
+    	this.img = ImageCreator.create("src/app/resources/alien.png");
     }
 
     @Override

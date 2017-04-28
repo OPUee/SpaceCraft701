@@ -2,6 +2,7 @@ package lowbob;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  */
 public abstract class LowBobSprite {
 
-    protected Image img;
+    protected BufferedImage img;
     protected double x, y, vx, vy, width, height;
     protected ArrayList<LowBobCollider> colliders;
 

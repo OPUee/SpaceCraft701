@@ -1,7 +1,6 @@
 package lowbob;
 
 import javax.swing.*;
-import javax.swing.text.html.HTMLDocument;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
