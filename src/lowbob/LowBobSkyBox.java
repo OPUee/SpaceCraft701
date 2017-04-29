@@ -6,15 +6,16 @@ import lowbob.util.ImageCreator;
 
 public class LowBobSkyBox {
 	private BufferedImage img;
-	private int width, height, counter, speed;
+	private int width, height;
+	double speed, counter;
 	
-	public LowBobSkyBox(BufferedImage img, int width, int height, int speed) {
+	public LowBobSkyBox(BufferedImage img, int width, int height, double speed) {
 		this.img = img;
 		this.width = width;
 		this.height = height;
 		this.speed = speed;
 		
-		this.counter = -1;		
+		this.counter = 0;		
 	}
 	
 	public BufferedImage next() {
@@ -26,13 +27,13 @@ public class LowBobSkyBox {
 		
 		if(counter > (this.img.getWidth() - width))
 		{
-			int offset = this.img.getWidth() - counter;
+			int offset = this.img.getWidth() - (int)counter;
 			int endpoint = this.width - offset;
 			
-			result = ImageCreator.combine(this.img.getSubimage(counter, 0, offset, this.height),
+			result = ImageCreator.combine(this.img.getSubimage((int)counter, 0, offset, this.height),
 					this.img.getSubimage(0, 0, endpoint, this.height)); 
 		} else {
-			result = this.img.getSubimage(counter, 0, this.width, this.height);
+			result = this.img.getSubimage((int)counter, 0, this.width, this.height);
 		}
 		
 		
