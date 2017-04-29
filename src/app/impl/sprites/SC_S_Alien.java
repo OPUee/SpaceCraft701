@@ -17,7 +17,9 @@ public class SC_S_Alien extends LowBobSprite {
         super(x, y, width, height);
 
         this.colliders.add(new LowBobCollider(SC_S_Missile.class));
-        this.colliders.add(new LowBobCollider(SC_S_laser.class));
+        this.colliders.add(new LowBobCollider(SC_S_Laser.class));
+        
+        this.addSprite(new SC_S_Alien_Thurster(45, 8, 20, 14));
     }
 
     @Override
@@ -27,7 +29,7 @@ public class SC_S_Alien extends LowBobSprite {
 
     @Override
     public void move() {
-        this.x -= 2;
+        this.x -= 7;
     }
 
     @Override
@@ -46,5 +48,6 @@ public class SC_S_Alien extends LowBobSprite {
         runtime.removeSprite(this);
         runtime.removeSprite(lbs);
         runtime.addSprite(new SC_S_Explosion(this.x + 10, this.y + 10, 30, 30));
+        runtime.addSprite(new SC_S_Coin(this.x + 10, this.y + 10, 14, 14));
     }
 }

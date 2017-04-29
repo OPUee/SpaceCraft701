@@ -3,6 +3,7 @@ package app.impl.sprites;
 import java.awt.event.KeyEvent;
 
 import lowbob.LowBobCollider;
+import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.util.ImageAnimator;
 import lowbob.util.ImageCreator;
@@ -17,7 +18,7 @@ public class SC_S_Coin extends LowBobSprite {
 		
 		counter = 0;
 		
-		this.colliders.add(new LowBobCollider(SC_S_laser.class));
+		this.colliders.add(new LowBobCollider(SC_S_SpaceCraft.class));
 	}
 
 	@Override
@@ -50,8 +51,7 @@ public class SC_S_Coin extends LowBobSprite {
 
 	@Override
 	public void collide(LowBobSprite lbs) {
-		// TODO Auto-generated method stub
-		
+		LowBobRuntime.getInstance().removeSprite(this);
 	}
 
 }

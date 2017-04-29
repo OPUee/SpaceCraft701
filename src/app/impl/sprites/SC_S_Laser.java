@@ -1,5 +1,6 @@
 package app.impl.sprites;
 
+import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.util.ImageCreator;
 
@@ -8,11 +9,11 @@ import java.awt.event.KeyEvent;
 /**
  * Created by opuee on 27.04.17.
  */
-public class SC_S_laser extends LowBobSprite {
+public class SC_S_Laser extends LowBobSprite {
 
     private int SPEED = 20;
 
-    public SC_S_laser(double x, double y, double width, double height) {
+    public SC_S_Laser(double x, double y, double width, double height) {
         super(x, y, width, height);
     }
 
@@ -24,6 +25,10 @@ public class SC_S_laser extends LowBobSprite {
     @Override
     public void move() {
         x += SPEED;
+        
+        if(x > 2000) {
+        	LowBobRuntime.getInstance().removeSprite(this);
+        }
     }
 
     @Override
