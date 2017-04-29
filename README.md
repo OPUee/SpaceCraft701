@@ -17,6 +17,7 @@ coming soon
 - relative layout in scene and sprites
 - collider objects for an efficient collision detection
 - predefined animator classes to create fancy looking 2D animations
+- skybox for infinite scrolling backgrounds
 
 ### Game ###
 - little technical preview
