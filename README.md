@@ -30,7 +30,6 @@ coming soon
 - possibility to play sounds.
 
 ### Game ###
-- animation of the background (could be a issue for the engine).
 - apply explosion animations on destroied alien ships.
 - advanced steering for players spacecraft.
 - simple "AI" for enemies.
