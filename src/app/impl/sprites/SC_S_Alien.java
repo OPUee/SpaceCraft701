@@ -45,5 +45,6 @@ public class SC_S_Alien extends LowBobSprite {
         LowBobRuntime runtime = LowBobRuntime.getInstance();
         runtime.removeSprite(this);
         runtime.removeSprite(lbs);
+        runtime.addSprite(new SC_S_Explosion(this.x + 10, this.y + 10, 30, 30));
     }
 }
