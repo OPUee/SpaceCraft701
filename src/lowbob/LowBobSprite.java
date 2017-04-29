@@ -36,6 +36,9 @@ public abstract class LowBobSprite {
     public void addSprite(LowBobSprite lbs) {
     	this.sprites.add(lbs);
     }
+    public void removeSprite(LowBobSprite lbs) {
+    	this.sprites.remove(lbs);
+    }
     public double getPosX() {
         return this.x;
     }
