@@ -2,13 +2,13 @@ package app.impl.sprites;
 
 import java.awt.event.KeyEvent;
 
+import lowbob.LowBobSkyBox;
 import lowbob.LowBobSprite;
-import lowbob.util.ImageAnimator;
 import lowbob.util.ImageCreator;
 
 public class SC_S_Skybox extends LowBobSprite {
 
-	private ImageAnimator ai_sky;
+	private LowBobSkyBox sky;
 	private int counter;
 	
 	public SC_S_Skybox(double x, double y, double width, double height) {
@@ -17,18 +17,17 @@ public class SC_S_Skybox extends LowBobSprite {
 
 	@Override
 	public void loadImage() {
-		ai_sky = new ImageAnimator(ImageCreator.create("src/app/resources/background.png"), 1400);
-		this.img = ai_sky.next();
+		sky = new LowBobSkyBox(ImageCreator.create("src/app/resources/background.png"), 1400, 800, 2);
+		this.img = sky.next();
 		counter = 0;
 	}
 
 	@Override
 	public void move() {
-		/*counter++;
+		counter++;
 		if(counter > 10000)
 			counter = 0;
-		if(counter % 10 == 0)
-			this.img = ai_sky.next();*/
+		this.img = sky.next();
 	}
 
 	@Override
