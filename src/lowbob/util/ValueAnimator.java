@@ -7,7 +7,7 @@ public class ValueAnimator {
 
     private double from, to, offset;
     private int frames, counter, iter;
-    private boolean loop,revert, expired;
+    private boolean loop, revert, expired;
 
     public ValueAnimator(double from, double to, int frames) {
 
