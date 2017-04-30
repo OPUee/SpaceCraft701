@@ -61,9 +61,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		
 		// internal counter updates
 		if(lc_cnt <= LASER_COOLDOWN)
-			lc_cnt++;		
-		
-		System.out.println("SC_Y_POS:" + y);
+			lc_cnt++;
 	}
 
 	@Override
@@ -83,6 +81,9 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 			break;
 		case KeyEvent.VK_SPACE:
 			fire();
+			break;
+		case KeyEvent.VK_M:
+			launch_missile();
 			break;
 		}
 	}
@@ -152,6 +153,10 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 			LowBobRuntime.getInstance().addSprite(new SC_S_Laser(this.x + 30, this.y + 20, 8, 2));
 			lc_cnt = 0;
 		}
+	}
+	
+	private void launch_missile() {
+		LowBobRuntime.getInstance().addSprite(new SC_S_Missile(this.x + 30, this.y + 20, 32, 16));
 	}
 	
 	private enum ACC_State {

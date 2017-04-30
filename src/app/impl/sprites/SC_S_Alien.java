@@ -30,6 +30,8 @@ public class SC_S_Alien extends LowBobSprite {
     @Override
     public void move() {
         this.x -= 7;
+        if(this.x < -100)
+        	LowBobRuntime.getInstance().removeSprite(this);
     }
 
     @Override
