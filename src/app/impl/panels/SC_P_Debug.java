@@ -39,7 +39,7 @@ public class SC_P_Debug extends LowBobPanel {
         // add alien spawner
         this.addSprite(new SC_S_AlienSpawner(0, 0, 0, 0));
 
-        LowBobTextUI scscoreui = new LowBobTextUI(1300,760,100,40, Color.BLUE);
+        LowBobTextUI scscoreui = new LowBobTextUI(1300,760,100,40, "Consolas", Color.BLUE);
         this.addSprite(scscoreui);
         player.setScoreUI(scscoreui);
 

@@ -27,7 +27,7 @@ public class LowBobTextUI extends LowBobUI{
     private void updateText() {
         if(this.content.compareTo(this.text) != 0) {
             this.content = this.text;
-            this.img = ImageCreator.createFromString(this.content, (int) this.width, (int) this.height, this.color);
+            this.img = ImageCreator.createFromString(this.content, (int) this.width, (int) this.height, this.fontfamily, this.color);
         }
     }
 
