@@ -21,7 +21,7 @@ public class SC_S_Coin extends LowBobSprite {
 
 	@Override
 	public void loadImage() {
-		ia = new ImageAnimator(ImageCreator.create("src/app/resources/coin.png"), 14);
+		ia = new ImageAnimator(ImageCreator.create("resources/coin.png"), 14);
 		this.img = ia.next();
 	}
 

@@ -19,7 +19,7 @@ public class SC_S_Missile extends LowBobSprite {
 
     @Override
     public void loadImage() {
-    	this.img = ImageCreator.create("src/app/resources/missile.png");
+    	this.img = ImageCreator.create("resources/missile.png");
     }
 
     @Override

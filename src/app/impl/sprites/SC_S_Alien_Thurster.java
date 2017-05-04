@@ -18,7 +18,7 @@ public class SC_S_Alien_Thurster extends LowBobSprite {
 
 	@Override
 	public void loadImage() {
-		ai_thurster = new ImageAnimator(ImageCreator.create("src/app/resources/alien_flame.png"), 20);
+		ai_thurster = new ImageAnimator(ImageCreator.create("resources/alien_flame.png"), 20);
 		this.img = ai_thurster.next();
 	}
 
