@@ -3,6 +3,7 @@ package lowbob.UI;
 import lowbob.LowBobSprite;
 import lowbob.util.ImageCreator;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -11,12 +12,14 @@ import java.awt.event.KeyEvent;
 public class LowBobTextUI extends LowBobUI{
 
     private String text, content;
+    private Color color;
 
-    public LowBobTextUI(double x, double y, double width, double height) {
+    public LowBobTextUI(double x, double y, double width, double height, Color color) {
         super(x, y, width, height);
 
         this.text = "test";
         this.content = "";
+        this.color = color;
         updateText();
     }
 
@@ -24,7 +27,7 @@ public class LowBobTextUI extends LowBobUI{
         if(this.content.compareTo(this.text) != 0) {
             System.out.println("update UI");
             this.content = this.text;
-            this.img = ImageCreator.createFromString(this.content, (int) this.width, (int) this.height);
+            this.img = ImageCreator.createFromString(this.content, (int) this.width, (int) this.height, this.color);
         }
     }
 
