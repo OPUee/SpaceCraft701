@@ -41,12 +41,12 @@ public class ImageCreator {
 	    return newImage;
 	}
 
-	public static BufferedImage createFromString(String text, int width, int height, Color color) {
+	public static BufferedImage createFromString(String text, int width, int height, String fontfamily, Color color) {
 		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = img.createGraphics();
 
 		g2d.setPaint(color);
-		g2d.setFont(new Font("Consolas", Font.BOLD, 20));
+		g2d.setFont(new Font(fontfamily, Font.BOLD, 20));
 
 		FontMetrics fm = g2d.getFontMetrics();
 

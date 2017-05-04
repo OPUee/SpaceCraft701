@@ -11,14 +11,15 @@ import java.awt.event.KeyEvent;
  */
 public class LowBobTextUI extends LowBobUI{
 
-    private String text, content;
+    private String text, content, fontfamily;
     private Color color;
 
-    public LowBobTextUI(double x, double y, double width, double height, Color color) {
+    public LowBobTextUI(double x, double y, double width, double height, String fontfamily, Color color) {
         super(x, y, width, height);
 
         this.text = "test";
         this.content = "";
+        this.fontfamily = fontfamily;
         this.color = color;
         updateText();
     }
