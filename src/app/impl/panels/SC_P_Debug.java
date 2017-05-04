@@ -9,6 +9,9 @@ import app.impl.sprites.SC_S_SpaceCraft;
 import app.impl.sprites.SC_S_Star;
 import app.impl.sprites.SC_S_Thurster;
 import lowbob.LowBobPanel;
+import lowbob.LowBobSprite;
+import lowbob.UI.LowBobTextUI;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -30,9 +33,15 @@ public class SC_P_Debug extends LowBobPanel {
         this.addSprite(new SC_S_Skybox(0, 0, 0, 0));
 
         // add spacecraft player
-        this.addSprite(new SC_S_SpaceCraft(40,400, 50, 50));
+        SC_S_SpaceCraft player = new SC_S_SpaceCraft(40,400, 50, 50);
+        this.addSprite(player);
         
         // add alien spawner
         this.addSprite(new SC_S_AlienSpawner(0, 0, 0, 0));
+
+        LowBobTextUI scscoreui = new LowBobTextUI(1300,760,100,40);
+        this.addSprite(scscoreui);
+        player.setScoreUI(scscoreui);
+
     }
 }

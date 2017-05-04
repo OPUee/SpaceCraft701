@@ -17,8 +17,6 @@ public class SC_S_Coin extends LowBobSprite {
 		super(x, y, width, height);
 		
 		counter = 0;
-		
-		this.colliders.add(new LowBobCollider(SC_S_SpaceCraft.class));
 	}
 
 	@Override
@@ -51,7 +49,7 @@ public class SC_S_Coin extends LowBobSprite {
 
 	@Override
 	public void collide(LowBobSprite lbs) {
-		LowBobRuntime.getInstance().removeSprite(this);
+
 	}
 
 }

@@ -3,6 +3,7 @@ package app.impl.sprites;
 import lowbob.LowBobCollider;
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
+import lowbob.UI.LowBobTextUI;
 import lowbob.util.ImageCreator;
 
 import java.awt.event.KeyEvent;
@@ -15,12 +16,15 @@ import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 public class SC_S_SpaceCraft extends LowBobSprite{
 	
 	private final double SPEED = 8;
-	private final double ACCELERATION = 0.2f;
-	private final double LASER_COOLDOWN = 10;
+	private final double ACCELERATION = 0.4f;
+	private final double LASER_COOLDOWN = 7;
 	private final int MARGIN = 100;
 	
 	private ACC_State xAcc, yAcc;
 	private int lc_cnt;
+
+	private int score;
+	private LowBobTextUI score_ui;
 	
 	private SC_S_Thurster thurster;
 
@@ -35,6 +39,12 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		// add thurster
 		thurster = new SC_S_Thurster(-16, 18, 15, 7);
 		this.addSprite(thurster);
+
+		// add score counter
+		score = 0;
+
+		// collider
+		this.colliders.add(new LowBobCollider(SC_S_Coin.class));
 	}
 
 	@Override
@@ -44,7 +54,6 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	@Override
 	public void move() {
-		
 		this.vx = calcVelocityX();
 		this.vy = calcVelocityY();
 		
@@ -62,21 +71,24 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		// internal counter updates
 		if(lc_cnt <= LASER_COOLDOWN)
 			lc_cnt++;
+
+		// update score ui
+		this.score_ui.setText(Integer.toString(score));
 	}
 
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
 		switch(keyEvent.getKeyCode()) {
-		case KeyEvent.VK_UP:
+		case KeyEvent.VK_W:
 			yAcc = ACC_State.NEG;
 			break;
-		case KeyEvent.VK_DOWN:
+		case KeyEvent.VK_S:
 			yAcc = ACC_State.POS;
 			break;
-		case KeyEvent.VK_LEFT:
+		case KeyEvent.VK_A:
 			xAcc = ACC_State.NEG;
 			break;
-		case KeyEvent.VK_RIGHT:
+		case KeyEvent.VK_D:
 			xAcc = ACC_State.POS;
 			break;
 		case KeyEvent.VK_SPACE:
@@ -91,12 +103,14 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 	@Override
 	public void keyReleased(KeyEvent keyEvent) {
 		switch(keyEvent.getKeyCode()) {
-		case KeyEvent.VK_UP:
-		case KeyEvent.VK_DOWN:
+
+		case KeyEvent.VK_W:
+		case KeyEvent.VK_S:
 			yAcc = ACC_State.IDLE;
 			break;
-		case KeyEvent.VK_LEFT:
-		case KeyEvent.VK_RIGHT:
+
+		case KeyEvent.VK_A:
+		case KeyEvent.VK_D:
 			xAcc = ACC_State.IDLE;
 			break;
 		}
@@ -104,7 +118,10 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	@Override
 	public void collide(LowBobSprite lbs) {
-		
+		if(lbs instanceof SC_S_Coin) {
+			score++;
+			LowBobRuntime.getInstance().removeSprite(lbs);
+		}
 	}
 	
 	// internal member functions
@@ -163,6 +180,10 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		POS,
 		NEG,
 		IDLE
-	};
+	}
+
+	public void setScoreUI(LowBobTextUI score_ui) {
+		this.score_ui = score_ui;
+	}
 
 }
