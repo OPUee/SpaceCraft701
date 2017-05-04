@@ -3,6 +3,7 @@
 out/*
 *.iml
 src/META-INF/*
+*.jar
 
 # eclipse project
 /bin/
