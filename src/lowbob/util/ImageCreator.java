@@ -1,8 +1,7 @@
 package lowbob.util;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 
@@ -40,5 +39,23 @@ public class ImageCreator {
 	    g2.drawImage(img2, null, img1.getWidth(), 0);
 	    g2.dispose();
 	    return newImage;
+	}
+
+	public static BufferedImage createFromString(String text, int width, int height) {
+		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2d = img.createGraphics();
+
+		g2d.setPaint(Color.green);
+		g2d.setFont(new Font("Consolas", Font.BOLD, 20));
+
+		FontMetrics fm = g2d.getFontMetrics();
+
+		int x = img.getWidth() - fm.stringWidth(text) - 5;
+		int y = fm.getHeight();
+
+		g2d.drawString(text, x, y);
+		g2d.dispose();
+
+		return img;
 	}
 }
