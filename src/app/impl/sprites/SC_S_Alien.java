@@ -35,16 +35,6 @@ public class SC_S_Alien extends LowBobSprite {
     }
 
     @Override
-    public void keyPressed(KeyEvent keyEvent) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
-
-    }
-
-    @Override
     public void collide(LowBobSprite lbs) {
         LowBobRuntime runtime = LowBobRuntime.getInstance();
         runtime.removeSprite(this);

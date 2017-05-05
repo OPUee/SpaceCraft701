@@ -33,19 +33,4 @@ public class SC_S_Alien_Thurster extends LowBobSprite {
 		
 	}
 
-	@Override
-	public void keyPressed(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void collide(LowBobSprite lbs) {
-		
-	}
-
 }

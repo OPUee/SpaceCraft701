@@ -30,19 +30,4 @@ public class SC_S_Missile extends LowBobSprite {
 
         x += vx;
     }
-
-    @Override
-    public void keyPressed(KeyEvent keyEvent) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
-
-    }
-
-    @Override
-    public void collide(LowBobSprite lbs) {
-
-    }
 }

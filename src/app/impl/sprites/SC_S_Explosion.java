@@ -35,20 +35,4 @@ public class SC_S_Explosion extends LowBobSprite {
 		if(counter % 2 == 0)
 			this.img = ai.next();
 	}
-
-	@Override
-	public void keyPressed(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void collide(LowBobSprite lbs) {
-		
-	}
-
 }

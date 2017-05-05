@@ -29,20 +29,4 @@ public class SC_S_Skybox extends LowBobSprite {
 			counter = 0;
 		this.img = sky.next();
 	}
-
-	@Override
-	public void keyPressed(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void collide(LowBobSprite lbs) {
-		
-	}
-
 }

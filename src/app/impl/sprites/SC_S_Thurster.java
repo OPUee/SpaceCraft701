@@ -33,20 +33,4 @@ public class SC_S_Thurster extends LowBobSprite {
 			this.img = ai_thurster.next();
 		
 	}
-
-	@Override
-	public void keyPressed(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void collide(LowBobSprite lbs) {
-		
-	}
-
 }

@@ -38,20 +38,4 @@ public class SC_S_AlienSpawner extends LowBobSprite{
 		int ypos = rnd.nextInt(600) + 100;
 		LowBobRuntime.getInstance().addSprite(new SC_S_Alien(1500, ypos, 50, 26));
 	}
-
-	@Override
-	public void keyPressed(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent keyEvent) {
-		
-	}
-
-	@Override
-	public void collide(LowBobSprite lbs) {
-		
-	}
-
 }

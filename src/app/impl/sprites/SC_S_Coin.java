@@ -34,22 +34,4 @@ public class SC_S_Coin extends LowBobSprite {
 		if((counter % 10) == 0)
 			this.img = ia.next();		
 	}
-
-	@Override
-	public void keyPressed(KeyEvent keyEvent) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent keyEvent) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void collide(LowBobSprite lbs) {
-
-	}
-
 }

@@ -44,16 +44,6 @@ public class SC_S_Star extends LowBobSprite{
     }
 
     @Override
-    public void keyPressed(KeyEvent keyEvent) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
-
-    }
-
-    @Override
     public void collide(LowBobSprite lbs) {
         if(!isHitten) {
             isHitten = true;
