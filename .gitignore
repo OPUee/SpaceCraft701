@@ -9,3 +9,8 @@ src/META-INF/*
 /bin/
 .classpath
 .project
+
+# build stuff
+*.sh
+*.bat
+*.zip
