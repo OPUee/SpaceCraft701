@@ -36,26 +36,6 @@ public class LowBobTextUI extends LowBobUI{
         //passed level above
     }
 
-    @Override
-    public void move() {
-        updateText();
-    }
-
-    @Override
-    public void keyPressed(KeyEvent keyEvent) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent keyEvent) {
-
-    }
-
-    @Override
-    public void collide(LowBobSprite lbs) {
-
-    }
-
     public void setText(String text) {
         this.text = text;
         updateText();

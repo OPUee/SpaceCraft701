@@ -2,6 +2,7 @@ package lowbob;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -26,11 +27,22 @@ public abstract class LowBobSprite {
         sprites = new ArrayList<>();
     }
 
+    // member functions
     public abstract void loadImage();
-    public abstract void move();
-    public abstract void keyPressed(KeyEvent keyEvent);
-    public abstract void keyReleased(KeyEvent keyEvent);
-    public abstract void collide(LowBobSprite lbs);
+    public void move() {}
+    public void collide(LowBobSprite lbs) {}
+
+    // KeyListener
+    public void keyTyped(KeyEvent keyEvent) {}
+    public void keyPressed(KeyEvent keyEvent) {}
+    public void keyReleased(KeyEvent keyEvent){}
+
+    //MouseListener
+    public void mouseClicked(MouseEvent mouseEvent) {}
+    public void mousePressed(MouseEvent mouseEvent) {}
+    public void mouseReleased(MouseEvent mouseEvent) {}
+    public void mouseEntered(MouseEvent mouseEvent) {}
+    public void mouseExited(MouseEvent mouseEvent) {}
 
     // getter and setter
     public void addSprite(LowBobSprite lbs) {

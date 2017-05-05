@@ -1,14 +1,13 @@
 package lowbob;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
  * Created by opuee on 24.04.17.
  */
-public class LowBobRuntime extends KeyAdapter implements Runnable {
+public class LowBobRuntime implements Runnable, MouseListener, KeyListener {
 
     private static LowBobRuntime instance = null;
 
@@ -100,17 +99,20 @@ public class LowBobRuntime extends KeyAdapter implements Runnable {
         }
     }
 
-    // implementation of KeyAdapter
+
+    // implementation of KeyListener
     @Override
-    public void keyPressed(KeyEvent keyEvent) {
-        keyPressed(keyEvent, lbp.getSprites());
+    public void keyTyped(KeyEvent keyEvent) {
+        for(Iterator<LowBobSprite> s = lbp.getSprites().iterator(); s.hasNext();) {
+            LowBobSprite sprite = s.next();
+
+            sprite.keyTyped(keyEvent);
+        }
     }
 
-    private void keyPressed(KeyEvent keyEvent, ArrayList<LowBobSprite> sprites) {
-        if (sprites == null)
-            return;
-
-        for(Iterator<LowBobSprite> s = sprites.iterator(); s.hasNext();) {
+    @Override
+    public void keyPressed(KeyEvent keyEvent) {
+        for(Iterator<LowBobSprite> s = lbp.getSprites().iterator(); s.hasNext();) {
             LowBobSprite sprite = s.next();
 
             sprite.keyPressed(keyEvent);
@@ -119,17 +121,56 @@ public class LowBobRuntime extends KeyAdapter implements Runnable {
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-        keyReleased(keyEvent, lbp.getSprites());
-    }
-
-    private void keyReleased(KeyEvent keyEvent, ArrayList<LowBobSprite> sprites) {
-        if (sprites == null)
-            return;
-
-        for(Iterator<LowBobSprite> s = sprites.iterator(); s.hasNext();) {
+        for(Iterator<LowBobSprite> s = lbp.getSprites().iterator(); s.hasNext();) {
             LowBobSprite sprite = s.next();
 
             sprite.keyReleased(keyEvent);
+        }
+    }
+
+    // implementation of MouseListener
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+        for(Iterator<LowBobSprite> s = lbp.getSprites().iterator(); s.hasNext();) {
+            LowBobSprite sprite = s.next();
+
+            sprite.mouseClicked(mouseEvent);
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent mouseEvent) {
+        for(Iterator<LowBobSprite> s = lbp.getSprites().iterator(); s.hasNext();) {
+            LowBobSprite sprite = s.next();
+
+            sprite.mousePressed(mouseEvent);
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent mouseEvent) {
+        for(Iterator<LowBobSprite> s = lbp.getSprites().iterator(); s.hasNext();) {
+            LowBobSprite sprite = s.next();
+
+            sprite.mouseReleased(mouseEvent);
+        }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent mouseEvent) {
+        for(Iterator<LowBobSprite> s = lbp.getSprites().iterator(); s.hasNext();) {
+            LowBobSprite sprite = s.next();
+
+            sprite.mouseEntered(mouseEvent);
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent mouseEvent) {
+        for(Iterator<LowBobSprite> s = lbp.getSprites().iterator(); s.hasNext();) {
+            LowBobSprite sprite = s.next();
+
+            sprite.mouseExited(mouseEvent);
         }
     }
 }
