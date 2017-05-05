@@ -1,5 +1,7 @@
 package lowbob;
 
+import lowbob.UI.LowBobUI;
+
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,6 +32,8 @@ public class LowBobRuntime implements Runnable, MouseListener, KeyListener {
         this.lbp.addSprite(sprite);
     }
     public void removeSprite(LowBobSprite sprite) {this.lbp.removeSprite(sprite);}
+    public void addUI(LowBobUI lbu) { this.lbp.addUI(lbu); }
+    public void removeUI(LowBobUI lbu) { this.lbp.removeUI(lbu); }
 
     private void update(ArrayList<LowBobSprite> sprites) {
         for(Iterator<LowBobSprite> s = sprites.iterator(); s.hasNext();) {
