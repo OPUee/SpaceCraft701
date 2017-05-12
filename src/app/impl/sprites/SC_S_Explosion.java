@@ -20,7 +20,7 @@ public class SC_S_Explosion extends LowBobSprite {
 
 	@Override
 	public void loadImage() {
-		ai = new ImageAnimator(ImageCreator.create("resources/explosion.png"), 30, false, false);
+		ai = new ImageAnimator(ImageCreator.create("resources/pics/explosion.png"), 30, false, false);
 		this.img = ai.next();
 	}
 

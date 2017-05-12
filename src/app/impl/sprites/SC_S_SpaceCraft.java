@@ -49,7 +49,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	@Override
 	public void loadImage() {
-		this.img = ImageCreator.create("resources/spacecraft.png");
+		this.img = ImageCreator.create("resources/pics/spacecraft.png");
 	}
 
 	@Override

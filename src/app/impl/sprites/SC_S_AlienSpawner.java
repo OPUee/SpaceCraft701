@@ -21,7 +21,7 @@ public class SC_S_AlienSpawner extends LowBobSprite{
 
 	@Override
 	public void loadImage() {
-		this.img = ImageCreator.create("resources/empty.png");
+		this.img = ImageCreator.create("resources/pics/empty.png");
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public class SC_S_Star extends LowBobSprite{
 
     @Override
     public void loadImage() {
-    	this.img = ImageCreator.create("resources/star.png");
+    	this.img = ImageCreator.create("resources/pics/star.png");
     }
 
     @Override

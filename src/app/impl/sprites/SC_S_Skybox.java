@@ -17,7 +17,7 @@ public class SC_S_Skybox extends LowBobSprite {
 
 	@Override
 	public void loadImage() {
-		sky = new LowBobSkyBox(ImageCreator.create("resources/background.png"), 1400, 800, 5);
+		sky = new LowBobSkyBox(ImageCreator.create("resources/pics/background.png"), 1400, 800, 5);
 		this.img = sky.next();
 		counter = 0;
 	}

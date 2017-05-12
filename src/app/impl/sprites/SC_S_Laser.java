@@ -19,7 +19,7 @@ public class SC_S_Laser extends LowBobSprite {
 
     @Override
     public void loadImage() {
-    	this.img = ImageCreator.create("resources/laser_red.png");
+    	this.img = ImageCreator.create("resources/pics/laser_red.png");
     }
 
     @Override
