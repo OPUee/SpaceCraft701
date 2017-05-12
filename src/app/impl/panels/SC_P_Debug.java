@@ -9,10 +9,16 @@ import app.impl.sprites.SC_S_SpaceCraft;
 import app.impl.sprites.SC_S_Star;
 import app.impl.sprites.SC_S_Thurster;
 import lowbob.LowBobPanel;
+import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
+import lowbob.UI.LowBobButtonUI;
 import lowbob.UI.LowBobTextUI;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
 
 /**
@@ -42,6 +48,9 @@ public class SC_P_Debug extends LowBobPanel {
         LowBobTextUI scscoreui = new LowBobTextUI(1300,760,100,40, "Consolas", Color.BLUE);
         this.addUI(scscoreui);
         player.setScoreUI(scscoreui);
+
+        LowBobButtonUI btn = new LowBobButtonUI(100,100,50,50,"resources/red.png");
+        this.addUI(btn);
 
     }
 }
