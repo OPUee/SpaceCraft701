@@ -14,28 +14,28 @@ import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
  * Created by opuee on 24.04.17.
  */
 public class SC_S_SpaceCraft extends LowBobSprite{
-	
+
 	private final double SPEED = 8;
 	private final double ACCELERATION = 0.4f;
 	private final double LASER_COOLDOWN = 7;
 	private final int MARGIN = 100;
-	
+
 	private ACC_State xAcc, yAcc;
 	private int lc_cnt;
 
 	private int score;
 	private LowBobTextUI score_ui;
-	
+
 	private SC_S_Thurster thurster;
 
 	public SC_S_SpaceCraft(double x, double y, double width, double height) {
 		super(x, y, width, height);
-		
+
 		xAcc = ACC_State.IDLE;
 		yAcc = ACC_State.IDLE;
-		
+
 		lc_cnt = 0;
-		
+
 		// add thurster
 		thurster = new SC_S_Thurster(-16, 18, 15, 7);
 		this.addSprite(thurster);
@@ -56,10 +56,10 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 	public void move() {
 		this.vx = calcVelocityX();
 		this.vy = calcVelocityY();
-		
+
 		this.x += vx;
 		this.y += vy;
-		
+
 		// update thurster
 		if(xAcc == ACC_State.NEG)
 			this.removeSprite(thurster);
@@ -67,7 +67,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 			if(!this.sprites.contains(thurster))
 				this.addSprite(thurster);
 		}
-		
+
 		// internal counter updates
 		if(lc_cnt <= LASER_COOLDOWN)
 			lc_cnt++;
@@ -123,14 +123,14 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 			LowBobRuntime.getInstance().removeSprite(lbs);
 		}
 	}
-	
+
 	// internal member functions
 	private double calcVelocityY() {
 		double result;
-		
+
 		boolean outOfLowerBounds = (y > (800 - MARGIN));
 		boolean outOfUpperBounds = (y < MARGIN);
-		
+
 		if(yAcc == ACC_State.POS && vy < SPEED && !outOfLowerBounds)
 			result = vy + ACCELERATION;
 		else if(yAcc == ACC_State.NEG && vy > -SPEED && !outOfUpperBounds)
@@ -141,16 +141,16 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 			result = vy - ACCELERATION;
 		else
 			result = vy;
-		
+
 		return result;
 	}
-	
+
 	private double calcVelocityX() {
 		double result;
-		
+
 		boolean outOfLowerBounds = (x > (1400 - MARGIN));
 		boolean outOfUpperBounds = (x < MARGIN);
-		
+
 		if(xAcc == ACC_State.POS && vx < SPEED && !outOfLowerBounds)
 			result = vx + ACCELERATION;
 		else if(xAcc == ACC_State.NEG && vx > -SPEED && !outOfUpperBounds)
@@ -161,21 +161,21 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 			result = vx - ACCELERATION;
 		else
 			result = vx;
-		
+
 		return result;
 	}
-	
+
 	private void fire() {
 		if(lc_cnt >= LASER_COOLDOWN) {
 			LowBobRuntime.getInstance().addSprite(new SC_S_Laser(this.x + 30, this.y + 20, 8, 2));
 			lc_cnt = 0;
 		}
 	}
-	
+
 	private void launch_missile() {
 		LowBobRuntime.getInstance().addSprite(new SC_S_Missile(this.x + 30, this.y + 20, 32, 16));
 	}
-	
+
 	private enum ACC_State {
 		POS,
 		NEG,

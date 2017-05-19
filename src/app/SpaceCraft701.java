@@ -40,14 +40,18 @@ public class SpaceCraft701 extends JFrame {
     }
 
     private static void initSC107() {
+
+        // registrate font for game
         try {
             GraphicsEnvironment ge =
                     GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("resources/sys/ARCADECLASSIC.TTF")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("resources/sys/visitor1.ttf")).deriveFont(30f));
         } catch (IOException |FontFormatException e) {
             //Handle exception
         }
 
+
+        // initialize game
         LowBobRuntime runtime = LowBobRuntime.getInstance();
 
         SpaceCraft701 app = new SpaceCraft701();
@@ -58,8 +62,6 @@ public class SpaceCraft701 extends JFrame {
 
         app.setPanel(panel);
         app.setVisible(true);
-
-        panel.addKeyListener(runtime);
 
         thread.start();
     }

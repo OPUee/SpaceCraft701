@@ -4,6 +4,7 @@ import lowbob.UI.LowBobUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -21,6 +22,56 @@ public abstract class LowBobPanel extends JPanel {
 
         this.sprites = new ArrayList<>();
         this.ui = new ArrayList<>();
+
+        this.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent keyEvent) {
+                for (int i = 0; i < sprites.size(); i++) {
+                    sprites.get(i).keyTyped(keyEvent);
+                }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent keyEvent) {
+                for (int i = 0; i < sprites.size(); i++) {
+                    sprites.get(i).keyPressed(keyEvent);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent keyEvent) {
+                for (int i = 0; i < sprites.size(); i++) {
+                    sprites.get(i).keyReleased(keyEvent);
+                }
+            }
+        });
+
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+
+            }
+        });
     }
 
     private void draw_sprites(Graphics g, ArrayList<LowBobSprite> sprites, double x, double y) {
