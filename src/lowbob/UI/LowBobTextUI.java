@@ -13,21 +13,23 @@ public class LowBobTextUI extends LowBobUI{
 
     private String text, content, fontfamily;
     private Color color;
+    private int fontsize;
 
-    public LowBobTextUI(double x, double y, double width, double height, String fontfamily, Color color) {
+    public LowBobTextUI(double x, double y, double width, double height, String fontfamily, Color color, int fontsize) {
         super(x, y, width, height);
 
         this.text = "test";
         this.content = "";
         this.fontfamily = fontfamily;
         this.color = color;
+        this.fontsize = fontsize;
         updateText();
     }
 
     private void updateText() {
         if(this.content.compareTo(this.text) != 0) {
             this.content = this.text;
-            this.img = ImageCreator.createFromString(this.content, (int) this.width, (int) this.height, this.fontfamily, this.color);
+            this.img = ImageCreator.createFromString(this.content, (int) this.width, (int) this.height, this.fontfamily, this.color, this.fontsize);
         }
     }
 
