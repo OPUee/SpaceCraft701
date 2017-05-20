@@ -49,27 +49,47 @@ public abstract class LowBobPanel extends JPanel {
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
-
+            	for (int i = 0; i < ui.size(); i++) {
+            		LowBobUI elem = ui.get(i);
+            		
+            		if(collides(elem, mouseEvent.getPoint()))
+            			elem.mouseClicked(mouseEvent);
+            	}
             }
 
             @Override
             public void mousePressed(MouseEvent mouseEvent) {
-
+            	for (int i = 0; i < ui.size(); i++) {
+            		LowBobUI elem = ui.get(i);
+            		
+            		if(collides(elem, mouseEvent.getPoint()))
+            			elem.mousePressed(mouseEvent);
+            	}
             }
 
             @Override
             public void mouseReleased(MouseEvent mouseEvent) {
-
+            	for (int i = 0; i < ui.size(); i++) {
+            		LowBobUI elem = ui.get(i);
+            		
+            		if(collides(elem, mouseEvent.getPoint()))
+            			elem.mouseReleased(mouseEvent);
+            	}
             }
 
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
-
+            	
             }
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-
+            	// 
+            }
+            
+            private boolean collides(LowBobUI elem, Point p) {
+            	return 	!(p.x > (elem.x + elem.width) ||
+                        p.y > (elem.y + elem.height));
             }
         });
     }

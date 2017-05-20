@@ -20,4 +20,14 @@ public class LowBobButtonUI extends LowBobUI {
     public void loadImage() {
         //pass to level above
     }
+    
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+    	System.out.println("clicked");
+    }
+    
+    @Override
+    public void mousePressed(MouseEvent mouseEvent) {
+    	System.out.println("pressed");
+    }
 }
