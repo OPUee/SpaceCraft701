@@ -96,9 +96,11 @@ public abstract class LowBobPanel extends JPanel {
         for(Iterator<LowBobUI> e = elements.iterator(); e.hasNext();) {
             LowBobUI element = e.next();
 
-            // draw sprite
+            // draw ui
             g.drawImage(element.getImage(), (int)(element.getPosX() + x), (int)(element.getPosY() + y), this);
             Toolkit.getDefaultToolkit().sync();
+            
+            draw_ui(g, element.getUIElements(), element.getPosX(), element.getPosY());
         }
     }
 
