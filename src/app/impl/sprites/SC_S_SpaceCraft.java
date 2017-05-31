@@ -4,6 +4,7 @@ import lowbob.LowBobCollider;
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.UI.LowBobTextUI;
+import lowbob.audio.LowBobAudio;
 import lowbob.util.ImageCreator;
 
 import java.awt.event.KeyEvent;
@@ -28,6 +29,8 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	private SC_S_Thurster thurster;
 
+	private LowBobAudio audio;
+
 	public SC_S_SpaceCraft(double x, double y, double width, double height) {
 		super(x, y, width, height);
 
@@ -35,6 +38,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		yAcc = ACC_State.IDLE;
 
 		lc_cnt = 0;
+		this.audio = new LowBobAudio("resources/sounds/laser.wav");
 
 		// add thurster
 		thurster = new SC_S_Thurster(-16, 18, 15, 7);
@@ -169,6 +173,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		if(lc_cnt >= LASER_COOLDOWN) {
 			LowBobRuntime.getInstance().addSprite(new SC_S_Laser(this.x + 30, this.y + 20, 8, 2));
 			lc_cnt = 0;
+			this.audio.play();
 		}
 	}
 
