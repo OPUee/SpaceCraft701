@@ -1,10 +1,6 @@
 package lowbob.audio;
 
 import java.io.*;
-import java.net.URL;
-import javax.sound.sampled.*;
-import javax.swing.*;
-
 import javax.sound.sampled.*;
 import java.io.IOException;
 
