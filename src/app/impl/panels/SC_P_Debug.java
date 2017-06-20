@@ -53,7 +53,7 @@ public class SC_P_Debug extends LowBobPanel {
         this.addUI(btn);
 
         LowBobTextUI text = new LowBobTextUI(10,10,600,40, "Visitor TT1 BRK", Color.ORANGE);
-        text.setText("Space  Craft 701  alpha  build  0.25");
+        text.setText("Space  Craft 701  alpha  build  0.31");
         this.addUI(text);
     }
 }
