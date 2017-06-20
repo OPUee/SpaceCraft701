@@ -43,9 +43,8 @@ public class SpaceCraft701 extends JFrame {
 
         // registrate font for game
         try {
-            GraphicsEnvironment ge =
-                    GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("resources/sys/visitor1.ttf")).deriveFont(30f));
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("resources/sys/visitor1.ttf")).deriveFont(30f));
         } catch (IOException |FontFormatException e) {
             //Handle exception
         }

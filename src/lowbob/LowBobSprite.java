@@ -23,8 +23,8 @@ public abstract class LowBobSprite {
         this.y = y;
         this.width = width;
         this.height = height;
-        colliders = new ArrayList<>();
-        sprites = new ArrayList<>();
+        colliders = new ArrayList<LowBobCollider>();
+        sprites = new ArrayList<LowBobSprite>();
     }
 
     // member functions
