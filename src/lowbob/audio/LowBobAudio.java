@@ -1,41 +1,42 @@
 package lowbob.audio;
 
-import java.io.*;
-import javax.sound.sampled.*;
-import java.io.IOException;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+
+import java.io.File;
 
 /**
  * Created by opuee on 31.05.17.
  */
-public class LowBobAudio implements Runnable {
+public class LowBobAudio {
 
-    private Clip clip;
+    MediaPlayer mediaPlayer;
 
-    public LowBobAudio(String path) {
-        try {
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File(path));
-            // Get a sound clip resource.
-            this.clip = AudioSystem.getClip();
-            // Open audio clip and load samples from the audio input stream.
-            this.clip.open(audioIn);
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
+    public LowBobAudio(String path)  {
+        Media hit = new Media(new File(path).toURI().toString());
+        mediaPlayer = new MediaPlayer(hit);
+
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                // set duration to zero for replay
+                mediaPlayer.seek(Duration.ZERO);
+                mediaPlayer.stop();
+                // it's pretty ugly... but it takes me
+                // three days for playing sounds efficient
+                // thanks java
+                // -> if someones knows a better way, let me know!!!
+            }
+        });
     }
 
     public void play() {
-        this.run();
-    }
-
-    @Override
-    public void run() {
-        if (this.clip.isRunning())
-            this.clip.stop();
-
-        this.clip.start();
+        if(mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING)
+        {
+            mediaPlayer.seek(Duration.ZERO);
+            mediaPlayer.stop();
+        }
+        mediaPlayer.play();
     }
 }
