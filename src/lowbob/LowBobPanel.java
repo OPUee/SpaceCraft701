@@ -20,8 +20,8 @@ public abstract class LowBobPanel extends JPanel {
         setFocusable(true);
         setDoubleBuffered(true);
 
-        this.sprites = new ArrayList<>();
-        this.ui = new ArrayList<>();
+        this.sprites = new ArrayList<LowBobSprite>();
+        this.ui = new ArrayList<LowBobUI>();
 
         this.addKeyListener(new KeyListener() {
             @Override
@@ -145,7 +145,7 @@ public abstract class LowBobPanel extends JPanel {
         if (this.sprites == null)
             return null;
         else
-            return new ArrayList<>(this.sprites);
+            return new ArrayList<LowBobSprite>(this.sprites);
     }
 
 }

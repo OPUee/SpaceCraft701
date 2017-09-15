@@ -1,5 +1,6 @@
 package lowbob;
 
+import javafx.embed.swing.JFXPanel;
 import lowbob.UI.LowBobUI;
 
 import java.awt.event.*;
@@ -24,7 +25,11 @@ public class LowBobRuntime implements Runnable {
         return instance;
     }
 
-    private LowBobRuntime() {}
+    private LowBobRuntime() {
+        // instantiate fx panel for initialisation process
+        // later needed while playing sound in javafx -.-'
+        final JFXPanel fxPanel = new JFXPanel();
+    }
 
     public void setLBP(LowBobPanel lbp) {
         this.lbp = lbp;
