@@ -72,12 +72,13 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		// update thurster
 		if(xAcc == ACC_State.NEG) {
 			this.removeSprite(thurster);
-			//this.removeSprite(light);
+			this.removeSprite(light);
 		}
 		else {
-			if(!this.sprites.contains(thurster))
+			if(!this.sprites.contains(thurster)) {
 				this.addSprite(thurster);
-				//this.addSprite(light);
+				this.addSprite(light);
+			}
 		}
 
 		// internal counter updates

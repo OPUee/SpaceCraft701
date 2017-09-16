@@ -56,7 +56,7 @@ public class SC_P_Debug extends LowBobPanel {
         text.setText("Space  Craft 701  alpha  build  0.32");
         this.addUI(text);
 
-        LowBobSimpleLight light = new LowBobSimpleLight(100,100,200,100,1,1,new Color(235, 0,0xff));
+        LowBobSimpleLight light = new LowBobSimpleLight(100,100,200,100,1, 1,new Color(235, 0,0xff));
         this.addSprite(light);
     }
 }
