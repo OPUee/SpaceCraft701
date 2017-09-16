@@ -2,8 +2,10 @@ package app.impl.sprites;
 
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
+import lowbob.illumination.LowBobSimpleLight;
 import lowbob.util.ImageCreator;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -12,9 +14,13 @@ import java.awt.event.KeyEvent;
 public class SC_S_Laser extends LowBobSprite {
 
     private int SPEED = 20;
+    private LowBobSimpleLight light;
 
     public SC_S_Laser(double x, double y, double width, double height) {
         super(x, y, width, height);
+
+        light = new LowBobSimpleLight(-45,-17,100,35,0.6,1.5,new Color(255, 25, 31));
+        this.addSprite(light);
     }
 
     @Override

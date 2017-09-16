@@ -45,7 +45,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 		// add thurster
 		thurster = new SC_S_Thurster(-16, 18, 15, 7);
-		light = new LowBobSimpleLight(-18,6,30,30, 0.7, 1, new Color(0xff, 78, 43));
+		light = new LowBobSimpleLight(-45,2,80,40, 0.7, 1, new Color(0xff, 78, 43));
 		this.addSprite(thurster);
 		this.addSprite(light);
 
