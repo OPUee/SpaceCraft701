@@ -5,8 +5,10 @@ import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.UI.LowBobTextUI;
 import lowbob.audio.LowBobAudio;
+import lowbob.illumination.LowBobSimpleLight;
 import lowbob.util.ImageCreator;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
@@ -28,6 +30,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 	private LowBobTextUI score_ui;
 
 	private SC_S_Thurster thurster;
+	private LowBobSimpleLight light;
 
 	private LowBobAudio audio;
 
@@ -42,7 +45,9 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 		// add thurster
 		thurster = new SC_S_Thurster(-16, 18, 15, 7);
+		light = new LowBobSimpleLight(-18,6,30,30, 0.7, 1, new Color(0xff, 78, 43));
 		this.addSprite(thurster);
+		this.addSprite(light);
 
 		// add score counter
 		score = 0;
@@ -65,11 +70,14 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		this.y += vy;
 
 		// update thurster
-		if(xAcc == ACC_State.NEG)
+		if(xAcc == ACC_State.NEG) {
 			this.removeSprite(thurster);
+			//this.removeSprite(light);
+		}
 		else {
 			if(!this.sprites.contains(thurster))
 				this.addSprite(thurster);
+				//this.addSprite(light);
 		}
 
 		// internal counter updates

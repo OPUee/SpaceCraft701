@@ -13,6 +13,7 @@ import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.UI.LowBobButtonUI;
 import lowbob.UI.LowBobTextUI;
+import lowbob.illumination.LowBobSimpleLight;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -49,7 +50,7 @@ public class SC_P_Debug extends LowBobPanel {
         this.addUI(scscoreui);
         player.setScoreUI(scscoreui);
         LowBobButtonUI btn = new LowBobButtonUI(100,100,50,50,"resources/pics/red.png");
-        this.addUI(btn);
+        //this.addUI(btn);
 
         LowBobTextUI text = new LowBobTextUI(10,10,600,40, "Visitor TT1 BRK", Color.ORANGE, 20);
         text.setText("Space  Craft 701  alpha  build  0.32");
