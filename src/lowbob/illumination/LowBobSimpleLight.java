@@ -47,28 +47,34 @@ public class LowBobSimpleLight extends LowBobSprite {
     private double[][] createMatrix(int width, int height, double intensity, double brightness)
     {
         double[][] mat = new double[width][height];
-        try {
-            PrintWriter writer = new PrintWriter("/home/opuee/out.csv", "UTF-8");
+        //try {
+            //PrintWriter writer = new PrintWriter("/home/opuee/out.csv", "UTF-8");
 
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < width; j++) {
-                    double x = (i * ((double)THRESH / (double)height)) - (THRESH / 2);
-                    double y = (j * ((double)THRESH / (double)width)) - (THRESH / 2);
+            for (int i = 0; i < width; i++) {
+                for (int j = 0; j < height; j++) {
+                    double x = (i * ((double)THRESH / (double)width)) - (THRESH / 2);
+                    double y = (j * ((double)THRESH / (double)height)) - (THRESH / 2);
 
                     x = Math.pow(brightness * x, 2);
                     y = Math.pow(brightness * y, 2);
 
                     mat[i][j] = intensity * Math.exp(-x  - y);
-                    writer.print(mat[i][j] + ";");
+                    //writer.print(mat[i][j] + ";");
                 }
-                writer.print("\n");
+                //writer.print("\n");
             }
 
-            writer.close();
+            //writer.close();
 
-        } catch (Exception ex) {
+        /*} catch (Exception ex) {
             System.out.println("shit happens");
-        }
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getLocalizedMessage());
+            System.out.println(ex.getStackTrace());
+            System.out.println(ex.getCause());
+
+
+        }*/
 
         return mat;
     }
