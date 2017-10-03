@@ -8,12 +8,16 @@ import app.impl.sprites.SC_S_Skybox;
 import app.impl.sprites.SC_S_SpaceCraft;
 import app.impl.sprites.SC_S_Star;
 import app.impl.sprites.SC_S_Thurster;
+import com.sun.javafx.geom.Vec2d;
 import lowbob.LowBobPanel;
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.UI.LowBobButtonUI;
 import lowbob.UI.LowBobTextUI;
 import lowbob.illumination.LowBobSimpleLight;
+import lowbob.particles.LowBobParticle;
+import lowbob.particles.LowBobParticleSystem;
+import lowbob.particles.impl.LowBobDirectedBehavior;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -56,7 +60,11 @@ public class SC_P_Debug extends LowBobPanel {
         text.setText("Space  Craft 701  alpha  build  0.32");
         this.addUI(text);
 
-        LowBobSimpleLight light = new LowBobSimpleLight(100,100,200,100,1, 1,new Color(235, 0,0xff));
-        this.addSprite(light);
+        LowBobSimpleLight light = new LowBobSimpleLight(0,0,10,10,1, 1,new Color(255, 115, 17));
+        //this.addSprite(light);
+
+        LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(0,7));
+        LowBobParticleSystem ps = new LowBobParticleSystem(100,100, light, 100, pdb, 10);
+        this.addSprite(ps);
     }
 }
