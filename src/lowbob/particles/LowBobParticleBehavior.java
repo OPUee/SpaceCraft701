@@ -7,5 +7,5 @@ import com.sun.javafx.geom.Vec2d;
  */
 public interface LowBobParticleBehavior {
 
-    public Vec2d update(LowBobParticle particle);
+    public Vec2d update(Vec2d From, float offset);
 }

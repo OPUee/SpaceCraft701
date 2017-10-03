@@ -3,24 +3,41 @@ package lowbob.particles;
 import com.sun.javafx.geom.Vec2d;
 import lowbob.LowBobSprite;
 
+import java.awt.image.BufferedImage;
+
 /**
  * Created by opuee on 16.09.17.
  */
-public class LowBobParticle {
+public class LowBobParticle extends LowBobSprite {
 
     private Vec2d m_velo;
-    private LowBobSprite m_sprite;
+    private int m_lifetime;
 
-    public LowBobParticle(Vec2d velo, LowBobSprite sprite) {
+    public LowBobParticle(Vec2d velo, BufferedImage img) {
+        super(0,0,0,0);
         this.m_velo = velo;
-        this.m_sprite = sprite;
+        this.m_lifetime = 0;
+
+        this.img = img;
+    }
+
+    @Override
+    public void loadImage() {
+    }
+
+    public void setPos(Vec2d pos) {
+        this.x = pos.x;
+        this.y = pos.y;
+
+        this.m_lifetime++;
+    }
+
+    public int getLifeTime() {
+        return this.m_lifetime;
     }
 
     public Vec2d getVelo() {
         return this.m_velo;
     }
 
-    public LowBobSprite getSprite() {
-        return this.m_sprite;
-    }
 }
