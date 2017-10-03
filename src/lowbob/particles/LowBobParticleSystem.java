@@ -1,9 +1,7 @@
 package lowbob.particles;
 
 import com.sun.javafx.geom.Vec2d;
-import lowbob.LowBobPanel;
 import lowbob.LowBobSprite;
-import lowbob.illumination.LowBobSimpleLight;
 
 import java.awt.image.BufferedImage;
 import java.util.*;
@@ -21,7 +19,7 @@ public class LowBobParticleSystem extends LowBobSprite{
 
     private int m_spawncounter;
 
-    public LowBobParticleSystem(double x, double y, BufferedImage sprite, int maxlifetime,
+    public LowBobParticleSystem(double x, double y, LowBobSprite sprite, int maxlifetime,
                                 LowBobParticleBehavior particlebehavior, int spawntime) {
         super(x, y, 0, 0);
 
@@ -29,7 +27,7 @@ public class LowBobParticleSystem extends LowBobSprite{
         this.m_spawncounter = 0;
 
         this.m_particlebehavior = particlebehavior;
-        this.m_sprite = sprite;
+        this.m_sprite = (BufferedImage) sprite.getImage();
         this.m_maxlifetime = maxlifetime;
         this.m_spawntime = spawntime;
     }
@@ -37,31 +35,35 @@ public class LowBobParticleSystem extends LowBobSprite{
     @Override
     public void loadImage() {
         // create empty image
-        this.img = new BufferedImage(0,0,BufferedImage.TYPE_INT_RGB);
+        this.img = new BufferedImage(1,1,BufferedImage.TYPE_INT_RGB);
     }
 
     @Override
     public void move() {
+
+        // create new particle
         if(m_spawncounter >= this.m_spawntime) {
-            for (int i = 0; i < this.sprites.size(); i++) {
-                LowBobParticle sprite = (LowBobParticle) this.sprites.get(i);
-                int lifetime = sprite.getLifeTime();
-
-                if (lifetime >= m_maxlifetime)
-                    this.removeSprite(sprite);
-                else {
-                    Vec2d curVelo = m_particlebehavior.update(sprite.getVelo(), (lifetime / m_maxlifetime));
-
-                    curVelo.x += sprite.getPosX();
-                    curVelo.y += sprite.getPosY();
-
-                    sprite.setPos(curVelo);
-                }
-            }
-
+            createParticle();
             this.m_spawncounter = 0;
         } else {
             this.m_spawncounter++;
+        }
+
+        // update listed particles
+        for (int i = 0; i < this.sprites.size(); i++) {
+            LowBobParticle sprite = (LowBobParticle) this.sprites.get(i);
+            int lifetime = sprite.getLifeTime();
+
+            if (lifetime >= m_maxlifetime)
+                this.removeSprite(sprite);
+            else {
+                Vec2d curVelo = m_particlebehavior.update(sprite.getVelo(), ((float)lifetime / (float)m_maxlifetime));
+
+                curVelo.x += sprite.getPosX();
+                curVelo.y += sprite.getPosY();
+
+                sprite.setPos(curVelo);
+            }
         }
     }
 
