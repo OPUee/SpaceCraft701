@@ -23,6 +23,7 @@ public class LowBobParticleSystem extends LowBobSprite{
     private int m_spawncount;
 
     private boolean isRunning;
+    private boolean isDispatched;
 
     public LowBobParticleSystem(double x, double y, LowBobSprite sprite, int maxlifetime,
                                 LowBobParticleBehavior particlebehavior, int spawntime, int spawncount) {
@@ -33,6 +34,7 @@ public class LowBobParticleSystem extends LowBobSprite{
         this.m_spawncounter = 0;
         this.m_velovariant = 2;
         this.isRunning = false;
+        this.isDispatched = false;
 
         this.m_particlebehavior = particlebehavior;
         this.m_sprite = (BufferedImage) sprite.getImage();
@@ -84,6 +86,11 @@ public class LowBobParticleSystem extends LowBobSprite{
                 sprite.setPos(curVelo);
             }
         }
+
+        // delete itself if dispatched and finished
+        if(this.isDispatched && (this.m_particles.size() == 0))
+            LowBobRuntime.getInstance().removeSprite(this);
+
     }
 
     private void createParticle() {
@@ -106,6 +113,18 @@ public class LowBobParticleSystem extends LowBobSprite{
         this.m_velovariant = value;
     }
 
-    public void Start() { this.isRunning = true; }
-    public void Stop() { this.isRunning = false; }
+    public void dispatch() {
+        this.Stop();
+        this.isDispatched = true;
+
+        LowBobRuntime.getInstance().addSprite(this);
+    }
+
+    public void Start() {
+        if(!this.isDispatched)
+            this.isRunning = true;
+    }
+    public void Stop() {
+        this.isRunning = false;
+    }
 }
