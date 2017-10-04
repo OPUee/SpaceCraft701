@@ -17,6 +17,7 @@ import java.awt.event.KeyEvent;
  */
 public class SC_S_Alien extends LowBobSprite {
 
+    private int m_health;
     private LowBobParticleSystem sparks;
 
     public SC_S_Alien(double x, double y, double width, double height) {
@@ -26,6 +27,8 @@ public class SC_S_Alien extends LowBobSprite {
         this.colliders.add(new LowBobCollider(SC_S_Laser.class));
         
         this.addSprite(new SC_S_Alien_Thurster(45, 8, 20, 14));
+
+        this.m_health = 5;
 
         // initialize particle system for spark bursts
         LowBobSimpleLight spark = new LowBobSimpleLight(0,0,10,10,1,1,new Color(0, 81,0xff));
@@ -49,11 +52,16 @@ public class SC_S_Alien extends LowBobSprite {
     @Override
     public void collide(LowBobSprite lbs) {
         LowBobRuntime runtime = LowBobRuntime.getInstance();
-        runtime.removeSprite(this);
         runtime.removeSprite(lbs);
-        runtime.addSprite(new SC_S_Explosion(this.x + 10, this.y + 10, 30, 30));
-        runtime.addSprite(new SC_S_Coin(this.x + 10, this.y + 10, 14, 14));
 
-        this.sparks.Start();
+        if(this.m_health <= 0) {
+            // die!!
+            runtime.addSprite(new SC_S_Explosion(this.x + 10, this.y + 10, 30, 30));
+            runtime.addSprite(new SC_S_Coin(this.x + 10, this.y + 10, 14, 14));
+            runtime.removeSprite(this);
+        } else {
+            this.sparks.Start();
+            this.m_health--;
+        }
     }
 }
