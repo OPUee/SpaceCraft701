@@ -56,7 +56,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		// add particlesystem
 		LowBobSimpleLight light = new LowBobSimpleLight(0,0,13,13,0.7,1,new Color(255, 133, 6));
 		LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(-10,0));
-		ps = new LowBobParticleSystem(-8,17,light,20,pdb,5);
+		ps = new LowBobParticleSystem(-8,17,light,20,pdb,5, 1);
 		ps.Start();
 		this.addSprite(ps);
 
