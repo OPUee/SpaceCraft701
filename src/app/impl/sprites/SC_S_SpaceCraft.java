@@ -21,8 +21,8 @@ import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
  */
 public class SC_S_SpaceCraft extends LowBobSprite{
 
-	private final double SPEED = 8;
-	private final double ACCELERATION = 0.4f;
+	private final double SPEED = 11;
+	private final double ACCELERATION = 0.8f;
 	private final double LASER_COOLDOWN = 7;
 	private final int MARGIN = 100;
 
