@@ -65,8 +65,8 @@ public class LowBobParticleSystem extends LowBobSprite{
             } else {
                 Vec2d curVelo = m_particlebehavior.update(sprite.getVelo(), ((float)lifetime / (float)m_maxlifetime));
 
-                curVelo.x = curVelo.x + sprite.getPosX();
-                curVelo.y = curVelo.y + sprite.getPosY();
+                curVelo.x = curVelo.x + sprite.getPosX() + this.abs_x;
+                curVelo.y = curVelo.y + sprite.getPosY() + this.abs_y;
 
                 sprite.setPos(curVelo);
             }
