@@ -1,5 +1,6 @@
 package app;
 
+import app.impl.panels.SC_P_Debug;
 import lowbob.LowBobPanel;
 import lowbob.LowBobRuntime;
 
@@ -53,8 +54,8 @@ public class SpaceCraft701 extends JFrame {
         LowBobRuntime runtime = LowBobRuntime.getInstance();
 
         SpaceCraft701 app = new SpaceCraft701();
-        //LowBobPanel panel = new SC_P_Debug();
-        LowBobPanel panel = new SC_P_Testseq();
+        LowBobPanel panel = new SC_P_Debug();
+        //LowBobPanel panel = new SC_P_Testseq();
         Thread thread = new Thread(runtime);
 
         runtime.setLBP(panel);
