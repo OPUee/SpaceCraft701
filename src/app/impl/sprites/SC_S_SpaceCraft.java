@@ -53,9 +53,9 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		this.addSprite(light);
 
 		// add particlesystem
-		LowBobSimpleLight light = new LowBobSimpleLight(0,0,20,20,1,1,new Color(84,0xff, 29));
-		LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(-3,0));
-		LowBobParticleSystem ps = new LowBobParticleSystem(100,100,light,50,pdb,5);
+		LowBobSimpleLight light = new LowBobSimpleLight(0,0,10,10,1,1,new Color(255, 182, 0));
+		LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(-10,0));
+		LowBobParticleSystem ps = new LowBobParticleSystem(-8,17,light,20,pdb,5);
 		this.addSprite(ps);
 
 		// add score counter
