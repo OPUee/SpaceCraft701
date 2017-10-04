@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public abstract class LowBobSprite {
 
     protected BufferedImage img;
-    protected double x, y, vx, vy, width, height;
+    protected double x, y, vx, vy, abs_x, abs_y, width, height;
     protected ArrayList<LowBobSprite> sprites;
     protected ArrayList<LowBobCollider> colliders;
 
@@ -21,6 +21,8 @@ public abstract class LowBobSprite {
 
         this.x = x;
         this.y = y;
+        this.abs_x = x;
+        this.abs_y = y;
         this.width = width;
         this.height = height;
         colliders = new ArrayList<LowBobCollider>();
@@ -57,6 +59,14 @@ public abstract class LowBobSprite {
     public double getPosY() {
         return this.y;
     }
+    public double getAbsX() {
+        return this.abs_x;
+    }
+    public double getAbsY() {
+        return this.abs_y;
+    }
+    public void setAbsX(double x) { this.abs_x = x; }
+    public void setAbsY(double y) { this.abs_y = y; }
     public double getWidth() { return this.width; }
     public double getHeight() { return this.height; }
     public Image getImage() {
