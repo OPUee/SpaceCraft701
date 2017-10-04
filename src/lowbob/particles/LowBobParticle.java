@@ -13,8 +13,8 @@ public class LowBobParticle extends LowBobSprite {
     private Vec2d m_velo;
     private int m_lifetime;
 
-    public LowBobParticle(Vec2d velo, BufferedImage img) {
-        super(0,0,0,0);
+    public LowBobParticle(double x, double y, Vec2d velo, BufferedImage img) {
+        super(x,y,0,0);
         this.m_velo = velo;
         this.m_lifetime = 0;
 
