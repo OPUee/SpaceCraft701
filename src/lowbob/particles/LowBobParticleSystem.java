@@ -24,7 +24,7 @@ public class LowBobParticleSystem extends LowBobSprite{
     private boolean isRunning;
 
     public LowBobParticleSystem(double x, double y, LowBobSprite sprite, int maxlifetime,
-                                LowBobParticleBehavior particlebehavior, int spawntime) {
+                                LowBobParticleBehavior particlebehavior, int spawntime, int spawncount) {
         super(x, y, 0, 0);
 
         this.m_rnd = new Random();
@@ -47,6 +47,12 @@ public class LowBobParticleSystem extends LowBobSprite{
 
     @Override
     public void move() {
+
+        //special case for single particle drop
+        if(this.m_spawntime < 0) {
+            createParticle();
+            this.isRunning = false;
+        }
 
         // create new particle
         if(isRunning) {
