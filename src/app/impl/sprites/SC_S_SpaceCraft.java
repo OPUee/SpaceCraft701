@@ -34,6 +34,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	private SC_S_Thurster thurster;
 	private LowBobSimpleLight light;
+	private LowBobParticleSystem ps;
 
 	private LowBobAudio audio;
 
@@ -53,9 +54,10 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		this.addSprite(light);
 
 		// add particlesystem
-		LowBobSimpleLight light = new LowBobSimpleLight(0,0,10,10,1,1,new Color(255, 182, 0));
+		LowBobSimpleLight light = new LowBobSimpleLight(0,0,13,13,0.7,1,new Color(255, 133, 6));
 		LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(-10,0));
-		LowBobParticleSystem ps = new LowBobParticleSystem(-8,17,light,20,pdb,5);
+		ps = new LowBobParticleSystem(-8,17,light,20,pdb,5);
+		ps.Start();
 		this.addSprite(ps);
 
 		// add score counter
@@ -82,11 +84,13 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		if(xAcc == ACC_State.NEG) {
 			this.removeSprite(thurster);
 			this.removeSprite(light);
+			this.ps.Stop();
 		}
 		else {
 			if(!this.sprites.contains(thurster)) {
 				this.addSprite(thurster);
 				this.addSprite(light);
+				this.ps.Start();
 			}
 		}
 
