@@ -58,6 +58,7 @@ public class SC_S_Alien extends LowBobSprite {
             // die!!
             runtime.addSprite(new SC_S_Explosion(this.x + 10, this.y + 10, 30, 30));
             runtime.addSprite(new SC_S_Coin(this.x + 10, this.y + 10, 14, 14));
+            this.sparks.dispatch();
             runtime.removeSprite(this);
         } else {
             this.sparks.Start();
