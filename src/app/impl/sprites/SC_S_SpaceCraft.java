@@ -1,11 +1,14 @@
 package app.impl.sprites;
 
+import com.sun.javafx.geom.Vec2d;
 import lowbob.LowBobCollider;
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.UI.LowBobTextUI;
 import lowbob.audio.LowBobAudio;
 import lowbob.illumination.LowBobSimpleLight;
+import lowbob.particles.LowBobParticleSystem;
+import lowbob.particles.impl.LowBobDirectedBehavior;
 import lowbob.util.ImageCreator;
 
 import java.awt.*;
@@ -48,6 +51,12 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		light = new LowBobSimpleLight(-45,2,80,40, 0.7, 1, new Color(0xff, 78, 43));
 		this.addSprite(thurster);
 		this.addSprite(light);
+
+		// add particlesystem
+		LowBobSimpleLight light = new LowBobSimpleLight(0,0,20,20,1,1,new Color(84,0xff, 29));
+		LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(-3,0));
+		LowBobParticleSystem ps = new LowBobParticleSystem(100,100,light,50,pdb,5);
+		this.addSprite(ps);
 
 		// add score counter
 		score = 0;
