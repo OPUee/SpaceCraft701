@@ -63,8 +63,9 @@ public class SC_P_Debug extends LowBobPanel {
         LowBobSimpleLight light = new LowBobSimpleLight(0,0,10,10,1, 1,new Color(255, 115, 17));
         //this.addSprite(light);
 
-        LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(0,7));
-        LowBobParticleSystem ps = new LowBobParticleSystem(100,100, light, 100, pdb, 10);
+        LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(0,5));
+        LowBobParticleSystem ps = new LowBobParticleSystem(200,200, light, 80, pdb, 5);
+        ps.setVelocityVariant(3);
         this.addSprite(ps);
     }
 }

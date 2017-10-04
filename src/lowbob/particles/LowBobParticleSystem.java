@@ -16,8 +16,8 @@ public class LowBobParticleSystem extends LowBobSprite{
     private LowBobParticleBehavior m_particlebehavior;
     private int m_spawntime;
     private int m_maxlifetime;
-
     private int m_spawncounter;
+    private float m_velovariant;
 
     public LowBobParticleSystem(double x, double y, LowBobSprite sprite, int maxlifetime,
                                 LowBobParticleBehavior particlebehavior, int spawntime) {
@@ -25,6 +25,7 @@ public class LowBobParticleSystem extends LowBobSprite{
 
         this.m_rnd = new Random();
         this.m_spawncounter = 0;
+        this.m_velovariant = 2;
 
         this.m_particlebehavior = particlebehavior;
         this.m_sprite = (BufferedImage) sprite.getImage();
@@ -68,10 +69,18 @@ public class LowBobParticleSystem extends LowBobSprite{
     }
 
     private void createParticle() {
-        Vec2d velocity = new Vec2d(m_rnd.nextFloat(), m_rnd.nextFloat());
+        Vec2d velocity = new Vec2d();
+
+        velocity.x = -this.m_velovariant + this.m_rnd.nextFloat() * (this.m_velovariant * 2);
+        velocity.y = -this.m_velovariant + this.m_rnd.nextFloat() * (this.m_velovariant * 2);
+
         LowBobParticle particle = new LowBobParticle(velocity, m_sprite);
 
         this.addSprite(particle);
 
+    }
+
+    public void setVelocityVariant(float value) {
+        this.m_velovariant = value;
     }
 }
