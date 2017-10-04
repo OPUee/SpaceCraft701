@@ -120,7 +120,7 @@ public abstract class LowBobPanel extends JPanel {
             g.drawImage(element.getImage(), (int)(element.getPosX() + x), (int)(element.getPosY() + y), this);
             Toolkit.getDefaultToolkit().sync();
             
-            draw_ui(g, element.getUIElements(), element.getPosX(), element.getPosY());
+            draw_ui(g, element.getUIElements(), x + element.getPosX(), y + element.getPosY());
         }
     }
 
