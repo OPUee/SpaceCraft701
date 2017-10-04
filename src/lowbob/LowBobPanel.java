@@ -98,8 +98,8 @@ public abstract class LowBobPanel extends JPanel {
         if (sprites == null)
             return;
 
-        for(Iterator<LowBobSprite> s = sprites.iterator(); s.hasNext();) {
-            LowBobSprite sprite = s.next();
+        for (int i = 0; i < sprites.size(); i++) {
+            LowBobSprite sprite = sprites.get(i);
 
             // draw sprite
             g.drawImage(sprite.getImage(), (int)(sprite.getPosX() + x), (int)(sprite.getPosY() + y), this);
@@ -113,8 +113,8 @@ public abstract class LowBobPanel extends JPanel {
         if (elements == null)
             return;
 
-        for(Iterator<LowBobUI> e = elements.iterator(); e.hasNext();) {
-            LowBobUI element = e.next();
+        for (int i = 0; i < elements.size(); i++) {
+            LowBobUI element = elements.get(i);
 
             // draw ui
             g.drawImage(element.getImage(), (int)(element.getPosX() + x), (int)(element.getPosY() + y), this);
