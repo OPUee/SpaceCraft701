@@ -18,20 +18,27 @@ coming soon
 - collider objects for an efficient collision detection
 - predefined animator classes to create fancy looking 2D animations
 - skybox for infinite scrolling backgrounds
+- ui elements for menu and hud visualisation
+- illumination matrices based on rgb and hsb
+- simple particle system
+- sound engine for playing sounds adhoc
 
 ### Game ###
-- little technical preview
+- fancy lighting effects 
+- cool particle floating around
+- realistc explosions
+- advanced steering in your SPACE CRAFT
+- so much more
+
 
 ## Comming up ##
 
 ### Engine ###
-- simple specialisation of the LowBobSprite class to UI Elements.
-- rudimentary implementation of "kind of illumination" points for a fancy look.
-- possibility to play sounds.
+- improve particle system and fix minor bugs
+- add eventhandler for changing panels / sceens
 
 ### Game ###
-- apply explosion animations on destroied alien ships.
-- advanced steering for players spacecraft.
+- breathtaking storymode
+- coop-mode for fighting aliens with your mate 
 - simple "AI" for enemies.
 - end boss.
-- sounds would really be great..
