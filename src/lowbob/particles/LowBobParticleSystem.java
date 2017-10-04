@@ -51,7 +51,7 @@ public class LowBobParticleSystem extends LowBobSprite{
     public void move() {
 
         //special case for single particle drop
-        if(this.m_spawntime < 0) {
+        if(this.m_spawntime < 0 && this.isRunning) {
             createParticle();
             this.isRunning = false;
         }
