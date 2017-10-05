@@ -22,8 +22,6 @@ public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
         setTitle("Space Craft 701");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
-
     }
 
     public void setPanel(LowBobPanel panel) {
@@ -31,6 +29,8 @@ public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
             this.remove(this.panel);
 
         this.panel = panel;
+        this.panel.addPanelChangedListener(this);
+
         this.add(panel);
 
         this.pack();
@@ -42,8 +42,9 @@ public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
     public void onPanelChanged(Object sender, PanelChangedEventArgs e) {
         if(e.getPanel() != null)
             this.setPanel(e.getPanel());
-        else
-            this.dispose();
+        else {
+            System.exit(0);
+        }
     }
 
     public static void main(String[] args) {

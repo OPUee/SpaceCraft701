@@ -18,6 +18,8 @@ import lowbob.illumination.LowBobSimpleLight;
 import lowbob.particles.LowBobParticle;
 import lowbob.particles.LowBobParticleSystem;
 import lowbob.particles.impl.LowBobDirectedBehavior;
+import lowbob.util.events.LowBobMouseEvent;
+import lowbob.util.events.PanelChangedEventArgs;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -29,7 +31,7 @@ import java.util.Random;
 /**
  * Created by opuee on 24.04.17.
  */
-public class SC_P_Debug extends LowBobPanel {
+public class SC_P_Debug extends LowBobPanel implements LowBobMouseEvent {
 	
 	private Random rnd;
 
@@ -58,7 +60,19 @@ public class SC_P_Debug extends LowBobPanel {
         text.setText("Space  Craft 701  alpha  build  0.32");
         this.addUI(text);
 
-        LowBobButtonUI button_exit = new LowBobButtonUI(1170,50,180,60,"resource/pics/exit_btn.png");
-        button_exit.mouseClicked
+        LowBobButtonUI button_exit = new LowBobButtonUI(1170,50,180,60,"resources/pics/exit_btn.png");
+        button_exit.addMouseListener(this);
+        this.addUI(button_exit);
+    }
+
+    @Override
+    public void onMouseClicked(Object sender, MouseEvent e) {
+        // exit UI
+        this.changePanel(this, new PanelChangedEventArgs(null));
+    }
+
+    @Override
+    public void onMousePressed(Object sender, MouseEvent e) {
+
     }
 }
