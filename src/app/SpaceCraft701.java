@@ -1,6 +1,7 @@
 package app;
 
 import app.impl.panels.SC_P_Debug;
+import app.impl.panels.SC_P_Title;
 import lowbob.LowBobPanel;
 import lowbob.LowBobRuntime;
 import lowbob.util.events.PanelChangedEvent;
@@ -25,6 +26,9 @@ public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
     }
 
     public void setPanel(LowBobPanel panel) {
+        // attach to runtime
+        LowBobRuntime.getInstance().setLBP(panel);
+
         if(this.panel != null)
             this.remove(this.panel);
 
@@ -35,6 +39,8 @@ public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
 
         this.pack();
         this.setLocationRelativeTo(this);
+
+
     }
 
     //event for changing the panel
@@ -68,11 +74,8 @@ public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
         LowBobRuntime runtime = LowBobRuntime.getInstance();
 
         SpaceCraft701 app = new SpaceCraft701();
-        LowBobPanel panel = new SC_P_Debug();
-        //LowBobPanel panel = new SC_P_Testseq();
+        LowBobPanel panel = new SC_P_Title();
         Thread thread = new Thread(runtime);
-
-        runtime.setLBP(panel);
 
         app.setPanel(panel);
         app.setVisible(true);
