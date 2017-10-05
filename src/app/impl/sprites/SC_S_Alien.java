@@ -28,12 +28,12 @@ public class SC_S_Alien extends LowBobSprite {
         
         this.addSprite(new SC_S_Alien_Thurster(45, 8, 20, 14));
 
-        this.m_health = 5;
+        this.m_health = 3;
 
         // initialize particle system for spark bursts
-        LowBobSimpleLight spark = new LowBobSimpleLight(0,0,10,10,1,1,new Color(0, 81,0xff));
+        LowBobSimpleLight spark = new LowBobSimpleLight(0,0,12,12,1,1,new Color(0, 81,0xff));
         LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(0,10));
-        sparks = new LowBobParticleSystem(0,0,spark,20,pdb,-1,5);
+        sparks = new LowBobParticleSystem(0,0,spark,30,pdb,-1,7);
         this.addSprite(sparks);
     }
 
