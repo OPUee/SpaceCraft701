@@ -1,6 +1,8 @@
 package lowbob;
 
 import lowbob.UI.LowBobUI;
+import lowbob.util.events.PanelChangedEvent;
+import lowbob.util.events.PanelChangedEventArgs;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +17,7 @@ public abstract class LowBobPanel extends JPanel {
 
     private ArrayList<LowBobSprite> sprites;
     private ArrayList<LowBobUI> ui;
+    private ArrayList<PanelChangedEvent> m_panelchangedevent;
 
     public LowBobPanel() {
         setFocusable(true);
@@ -22,6 +25,7 @@ public abstract class LowBobPanel extends JPanel {
 
         this.sprites = new ArrayList<LowBobSprite>();
         this.ui = new ArrayList<LowBobUI>();
+        this.m_panelchangedevent = new ArrayList<>();
 
         this.addKeyListener(new KeyListener() {
             @Override
@@ -148,6 +152,12 @@ public abstract class LowBobPanel extends JPanel {
             return null;
         else
             return new ArrayList<LowBobSprite>(this.sprites);
+    }
+
+    public void changePanel(Object sender, PanelChangedEventArgs e) {
+        for(PanelChangedEvent event : this.m_panelchangedevent) {
+            event.onPanelChanged(sender, e);
+        }
     }
 
 }
