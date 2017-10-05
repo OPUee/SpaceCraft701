@@ -154,6 +154,10 @@ public abstract class LowBobPanel extends JPanel {
             return new ArrayList<LowBobSprite>(this.sprites);
     }
 
+    public void addPanelChangedListener(PanelChangedEvent listener) {
+        this.m_panelchangedevent.add(listener);
+    }
+
     public void changePanel(Object sender, PanelChangedEventArgs e) {
         for(PanelChangedEvent event : this.m_panelchangedevent) {
             event.onPanelChanged(sender, e);

@@ -43,8 +43,8 @@ public abstract class LowBobUI extends LowBobSprite {
     	throw new NotImplementedException();
     }
     
-    @Override
+    /*@Override
     public ArrayList<LowBobSprite> getSprites() { 
     	throw new NotImplementedException();
-    }
+    }*/
 }
