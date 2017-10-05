@@ -3,6 +3,8 @@ package app;
 import app.impl.panels.SC_P_Debug;
 import lowbob.LowBobPanel;
 import lowbob.LowBobRuntime;
+import lowbob.util.events.PanelChangedEvent;
+import lowbob.util.events.PanelChangedEventArgs;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +14,7 @@ import java.io.File;
 /**
  * Created by opuee on 24.04.17.
  */
-public class SpaceCraft701 extends JFrame {
+public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
 
     private LowBobPanel panel;
 
@@ -20,6 +22,8 @@ public class SpaceCraft701 extends JFrame {
         setTitle("Space Craft 701");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
+
     }
 
     public void setPanel(LowBobPanel panel) {
@@ -31,6 +35,15 @@ public class SpaceCraft701 extends JFrame {
 
         this.pack();
         this.setLocationRelativeTo(this);
+    }
+
+    //event for changing the panel
+    @Override
+    public void onPanelChanged(Object sender, PanelChangedEventArgs e) {
+        if(e.getPanel() != null)
+            this.setPanel(e.getPanel());
+        else
+            this.dispose();
     }
 
     public static void main(String[] args) {
@@ -65,5 +78,4 @@ public class SpaceCraft701 extends JFrame {
 
         thread.start();
     }
-
 }
