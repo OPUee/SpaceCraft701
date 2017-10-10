@@ -39,7 +39,7 @@ public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
 
         this.pack();
         this.setLocationRelativeTo(this);
-
+        this.panel.requestFocus();
 
     }
 
