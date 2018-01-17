@@ -30,10 +30,15 @@ public class LowBobSimpleLight extends LowBobSprite {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 // use gaussian matrix for saturation value
-                Color c = Color.getHSBColor(hsb[0], 1 - (float)mat[i][j], hsb[2]);
+                float saturation = 1 - (float)mat[i][j];
+                saturation = saturation > 1 ? 1 : saturation;
+                saturation = saturation < 0 ? 0 : saturation;
+                Color c = Color.getHSBColor(hsb[0], saturation, hsb[2]);
 
                 // use gaussian matrix for RGB alpha value
-                c = new Color(c.getRed(), c.getGreen(), c.getBlue(), (int)(mat[i][j] * 255));
+                int alpha = (int)(mat[i][j] * 255);
+                alpha = alpha > 255 ? 255 : alpha;
+                c = new Color(c.getRed(), c.getGreen(), c.getBlue(), alpha);
                 this.img.setRGB(i,j,c.getRGB());
             }
         }
