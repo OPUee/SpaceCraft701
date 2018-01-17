@@ -31,7 +31,9 @@ public class SC_S_Alien extends LowBobSprite {
         this.m_health = 3;
 
         // initialize particle system for spark bursts
-        LowBobSimpleLight spark = new LowBobSimpleLight(0,0,12,12,1,1,new Color(0, 81,0xff));
+        LowBobSimpleLight spark = new LowBobSimpleLight(0,0,20,20,1.1,1.6,new Color(0, 81,0xff));
+        LowBobSimpleLight flare = new LowBobSimpleLight(0,0,50,50,0.8,1,new Color(0, 81,0xff));
+        spark.addSprite(flare);
         LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(0,10));
         sparks = new LowBobParticleSystem(0,0,spark,30,pdb,-1,7);
         this.addSprite(sparks);
@@ -56,8 +58,8 @@ public class SC_S_Alien extends LowBobSprite {
 
         if(this.m_health <= 0) {
             // die!!
+            runtime.addSprite(new SC_S_Plutonium(this.x + 10, this.y, 30, 32));
             runtime.addSprite(new SC_S_Explosion(this.x + 10, this.y + 10, 30, 30));
-            runtime.addSprite(new SC_S_Coin(this.x + 10, this.y + 10, 14, 14));
             this.sparks.dispatch();
             runtime.removeSprite(this);
         } else {

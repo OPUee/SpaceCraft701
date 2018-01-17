@@ -64,7 +64,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		score = 0;
 
 		// collider
-		this.colliders.add(new LowBobCollider(SC_S_Coin.class));
+		this.colliders.add(new LowBobCollider(SC_S_Plutonium.class));
 	}
 
 	@Override
@@ -144,7 +144,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	@Override
 	public void collide(LowBobSprite lbs) {
-		if(lbs instanceof SC_S_Coin) {
+		if(lbs instanceof SC_S_Plutonium) {
 			score++;
 			LowBobRuntime.getInstance().removeSprite(lbs);
 		}
