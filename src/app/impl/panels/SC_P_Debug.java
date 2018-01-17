@@ -1,13 +1,6 @@
 package app.impl.panels;
 
-import app.impl.sprites.SC_S_Alien;
-import app.impl.sprites.SC_S_AlienSpawner;
-import app.impl.sprites.SC_S_Alien_Thurster;
-import app.impl.sprites.SC_S_Coin;
-import app.impl.sprites.SC_S_Skybox;
-import app.impl.sprites.SC_S_SpaceCraft;
-import app.impl.sprites.SC_S_Star;
-import app.impl.sprites.SC_S_Thurster;
+import app.impl.sprites.*;
 import com.sun.javafx.geom.Vec2d;
 import lowbob.LowBobPanel;
 import lowbob.LowBobRuntime;
@@ -63,6 +56,11 @@ public class SC_P_Debug extends LowBobPanel implements LowBobMouseEvent {
         LowBobButtonUI button_exit = new LowBobButtonUI(1170,50,180,60,"resources/pics/exit_btn.png");
         button_exit.addMouseListener(this);
         this.addUI(button_exit);
+
+        // temp stuff
+        SC_S_Boomer boomer = new SC_S_Boomer(200,200,36,36);
+        this.addSprite(boomer);
+
     }
 
     @Override
