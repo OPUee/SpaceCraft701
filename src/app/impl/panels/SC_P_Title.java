@@ -19,14 +19,16 @@ public class SC_P_Title extends LowBobPanel implements LowBobMouseEvent {
         setBackground(new Color(0x02, 17, 33));
         setPreferredSize(new Dimension(700, 800));
 
+        LowBobButtonUI background = new LowBobButtonUI(0,0,700,800, "resources/pics/title_background.png");
         LowBobButtonUI img_title = new LowBobButtonUI(100,100,168,102,"resources/pics/title_big.png");
         LowBobButtonUI start_btn = new LowBobButtonUI(120,500,471,111,"resources/pics/start_btn.png");
         LowBobTextUI txt_info = new LowBobTextUI(125,430,470,40,"Visitor TT1 BRK",Color.red,19);
 
         start_btn.addMouseListener(this);
 
-        txt_info.setText("SpaceCraft Technical preview version 0.56");
+        txt_info.setText("SpaceCraft development alpha build 0.73");
 
+        this.addUI(background);
         this.addUI(img_title);
         this.addUI(start_btn);
         this.addUI(txt_info);

@@ -74,8 +74,7 @@ public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
         LowBobRuntime runtime = LowBobRuntime.getInstance();
 
         SpaceCraft701 app = new SpaceCraft701();
-        //LowBobPanel panel = new SC_P_Title();
-        LowBobPanel panel = new SC_P_Debug();
+        LowBobPanel panel = new SC_P_Title();
         Thread thread = new Thread(runtime);
 
         app.setPanel(panel);
