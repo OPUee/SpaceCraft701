@@ -17,6 +17,13 @@ public class LowBobRuntime implements Runnable {
     private final int DELAY = 25;
     private LowBobPanel lbp;
 
+    private RuntimeState runtimestate;
+
+    public enum RuntimeState {
+        RUNNING,
+        SUSPENDED
+    }
+
     // Singleton impl
     public static LowBobRuntime getInstance() {
         if(instance == null)
@@ -29,7 +36,10 @@ public class LowBobRuntime implements Runnable {
         // instantiate fx panel for initialisation process
         // later needed while playing sound in javafx -.-'
         final JFXPanel fxPanel = new JFXPanel();
+        this.runtimestate = RuntimeState.RUNNING;
     }
+
+    public void setRuntimeState(RuntimeState state) { this.runtimestate = state; }
 
     public void setLBP(LowBobPanel lbp) {
         this.lbp = lbp;
@@ -88,7 +98,8 @@ public class LowBobRuntime implements Runnable {
 
         while (true) {
 
-            update(lbp.getSprites());
+            if (this.runtimestate == RuntimeState.RUNNING)
+                update(lbp.getSprites());
             collide(lbp.getSprites());
             lbp.repaint();
 

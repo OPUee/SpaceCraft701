@@ -37,6 +37,8 @@ public class SC_P_Debug extends LowBobPanel implements LowBobMouseEvent {
         
         // set skybox
         this.addSprite(new SC_S_Skybox(0, 0, 0, 0));
+        // add MenuController
+        this.addSprite(new SC_S_MenuController(0,0,0,0));
 
 
 
