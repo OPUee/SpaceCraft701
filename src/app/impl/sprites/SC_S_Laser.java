@@ -6,7 +6,6 @@ import lowbob.illumination.LowBobSimpleLight;
 import lowbob.util.ImageCreator;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 /**
  * Created by opuee on 27.04.17.
@@ -32,7 +31,7 @@ public class SC_S_Laser extends LowBobSprite {
     public void move() {
         x += SPEED;
         
-        if(x > 2000) {
+        if(x > 1500) {
         	LowBobRuntime.getInstance().removeSprite(this);
         }
     }

@@ -38,16 +38,25 @@ public class SC_P_Debug extends LowBobPanel implements LowBobMouseEvent {
         // set skybox
         this.addSprite(new SC_S_Skybox(0, 0, 0, 0));
 
-        // add spacecraft player
-        SC_S_SpaceCraft player = new SC_S_SpaceCraft(40,400, 50, 50);
-        this.addSprite(player);
-        
-        // add alien spawner
-        this.addSprite(new SC_S_AlienSpawner(0, 0, 0, 0));
 
-        LowBobTextUI scscoreui = new LowBobTextUI(1300,700,100,40, "Visitor TT1 BRK", Color.BLUE, 40);
+
+        // add spacecraft player
+        SC_S_SpaceCraft player = new SC_S_SpaceCraft(-60,400, 50, 50);
+        this.addSprite(player);
+
+        // add def watch
+        SC_S_SHWatch watch = new SC_S_SHWatch(20,700,60,60);
+        this.addSprite(watch);
+        player.setDefWatch(watch);
+
+        LowBobTextUI scscoreui = new LowBobTextUI(200,690,100,70, "Visitor TT1 BRK", Color.BLUE, 70);
         this.addUI(scscoreui);
         player.setScoreUI(scscoreui);
+
+
+
+        // add alien spawner
+        this.addSprite(new SC_S_AlienSpawner(0, 0, 0, 0));
 
         LowBobTextUI text = new LowBobTextUI(10,10,600,40, "Visitor TT1 BRK", Color.ORANGE, 20);
         text.setText("Space  Craft 701  alpha  build  0.32");
@@ -55,7 +64,7 @@ public class SC_P_Debug extends LowBobPanel implements LowBobMouseEvent {
 
         LowBobButtonUI button_exit = new LowBobButtonUI(1170,50,180,60,"resources/pics/exit_btn.png");
         button_exit.addMouseListener(this);
-        this.addUI(button_exit);
+        //this.addUI(button_exit);
 
         // temp stuff
         SC_S_Boomer boomer = new SC_S_Boomer(200,200,36,36);

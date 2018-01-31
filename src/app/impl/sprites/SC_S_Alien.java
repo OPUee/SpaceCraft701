@@ -10,15 +10,17 @@ import lowbob.particles.impl.LowBobDirectedBehavior;
 import lowbob.util.ImageCreator;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 /**
  * Created by opuee on 27.04.17.
  */
 public class SC_S_Alien extends LowBobSprite {
 
-    private int m_health;
+    private static int SHOOTING_RATE = 80;
+
+    private int health;
     private LowBobParticleSystem sparks;
+    private int shooting_counter;
 
     public SC_S_Alien(double x, double y, double width, double height) {
         super(x, y, width, height);
@@ -28,7 +30,8 @@ public class SC_S_Alien extends LowBobSprite {
         
         this.addSprite(new SC_S_Alien_Thurster(45, 8, 20, 14));
 
-        this.m_health = 3;
+        this.health = 3;
+        this.shooting_counter = 0;
 
         // initialize particle system for spark bursts
         LowBobSimpleLight spark = new LowBobSimpleLight(0,0,20,20,1.1,1.6,new Color(0, 81,0xff));
@@ -46,9 +49,16 @@ public class SC_S_Alien extends LowBobSprite {
 
     @Override
     public void move() {
+        this.shooting_counter++;
+
         this.x -= 7;
         if(this.x < -100)
         	LowBobRuntime.getInstance().removeSprite(this);
+
+        if(this.shooting_counter >= SHOOTING_RATE){
+            this.shooting_counter = 0;
+            shoot();
+        }
     }
 
     @Override
@@ -56,7 +66,7 @@ public class SC_S_Alien extends LowBobSprite {
         LowBobRuntime runtime = LowBobRuntime.getInstance();
         runtime.removeSprite(lbs);
 
-        if(this.m_health <= 0) {
+        if(this.health <= 0) {
             // die!!
             runtime.addSprite(new SC_S_Plutonium(this.x + 10, this.y, 30, 32));
             runtime.addSprite(new SC_S_Explosion(this.x + 10, this.y + 10, 30, 30));
@@ -64,7 +74,28 @@ public class SC_S_Alien extends LowBobSprite {
             runtime.removeSprite(this);
         } else {
             this.sparks.Start();
-            this.m_health--;
+            this.health--;
         }
+    }
+
+    private void shoot(){
+        System.out.println("alien shoot!");
+        LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(this.x,this.y + 10,8,2));
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    LowBobRuntime runtime = LowBobRuntime.getInstance();
+                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2));
+                    Thread.sleep(160);
+                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2));
+                    Thread.sleep(160);
+                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

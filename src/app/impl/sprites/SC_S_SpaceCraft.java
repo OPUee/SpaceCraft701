@@ -31,6 +31,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	private int score;
 	private LowBobTextUI score_ui;
+	private SC_S_SHWatch def_watch;
 
 	private SC_S_Thurster thurster;
 	private LowBobSimpleLight light;
@@ -65,6 +66,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 		// collider
 		this.colliders.add(new LowBobCollider(SC_S_Plutonium.class));
+		this.colliders.add(new LowBobCollider(SC_S_Alien_Laser.class));
 	}
 
 	@Override
@@ -74,6 +76,9 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	@Override
 	public void move() {
+
+
+
 		this.vx = calcVelocityX();
 		this.vy = calcVelocityY();
 
@@ -145,9 +150,12 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 	@Override
 	public void collide(LowBobSprite lbs) {
 		if(lbs instanceof SC_S_Plutonium) {
-			score++;
-			LowBobRuntime.getInstance().removeSprite(lbs);
-		}
+            score++;
+            LowBobRuntime.getInstance().removeSprite(lbs);
+        } else if (lbs instanceof SC_S_Alien_Laser) {
+		    this.def_watch.decrease();
+            LowBobRuntime.getInstance().removeSprite(lbs);
+        }
 	}
 
 	// internal member functions
@@ -212,5 +220,6 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 	public void setScoreUI(LowBobTextUI score_ui) {
 		this.score_ui = score_ui;
 	}
+	public void setDefWatch(SC_S_SHWatch def_watch) { this.def_watch = def_watch; }
 
 }
