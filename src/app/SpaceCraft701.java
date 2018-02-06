@@ -28,6 +28,7 @@ public class SpaceCraft701 extends JFrame implements PanelChangedEvent{
     public void setPanel(LowBobPanel panel) {
         // attach to runtime
         LowBobRuntime.getInstance().setLBP(panel);
+        panel.setup();
 
         if(this.panel != null)
             this.remove(this.panel);

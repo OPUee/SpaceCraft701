@@ -98,6 +98,8 @@ public abstract class LowBobPanel extends JPanel {
         });
     }
 
+    public abstract void setup();
+
     private void draw_sprites(Graphics g, ArrayList<LowBobSprite> sprites, double x, double y) {
         if (sprites == null)
             return;

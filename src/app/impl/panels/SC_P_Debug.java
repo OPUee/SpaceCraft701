@@ -15,16 +15,13 @@ import java.util.Random;
  * Created by opuee on 24.04.17.
  */
 public class SC_P_Debug extends LowBobPanel {
-	
-	private Random rnd;
 
-    public SC_P_Debug() {
-    	rnd = new Random();
-    	
+    @Override
+    public void setup() {
         // init panel
         setBackground(Color.BLACK);
         setPreferredSize(new Dimension(1400, 800));
-        
+
         // set skybox
         this.addSprite(new SC_S_Skybox(0, 0, 0, 0));
 

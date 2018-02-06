@@ -14,7 +14,8 @@ import java.awt.event.MouseEvent;
  */
 public class SC_P_Title extends LowBobPanel implements LowBobMouseEvent {
 
-    public SC_P_Title() {
+    @Override
+    public void setup() {
         // init panel
         setBackground(new Color(0x02, 17, 33));
         setPreferredSize(new Dimension(700, 800));
