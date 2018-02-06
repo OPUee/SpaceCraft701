@@ -1,24 +1,14 @@
 package app.impl.panels;
 
 import app.impl.sprites.*;
-import com.sun.javafx.geom.Vec2d;
 import lowbob.LowBobPanel;
-import lowbob.LowBobRuntime;
-import lowbob.LowBobSprite;
 import lowbob.UI.LowBobButtonUI;
 import lowbob.UI.LowBobTextUI;
-import lowbob.illumination.LowBobSimpleLight;
-import lowbob.particles.LowBobParticle;
-import lowbob.particles.LowBobParticleSystem;
-import lowbob.particles.impl.LowBobDirectedBehavior;
 import lowbob.util.events.LowBobMouseEvent;
 import lowbob.util.events.PanelChangedEventArgs;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Random;
 
 /**
@@ -37,9 +27,6 @@ public class SC_P_Debug extends LowBobPanel implements LowBobMouseEvent {
         
         // set skybox
         this.addSprite(new SC_S_Skybox(0, 0, 0, 0));
-        // add MenuController
-        this.addSprite(new SC_S_MenuController(0,0,0,0));
-
 
 
         // add spacecraft player
@@ -71,6 +58,9 @@ public class SC_P_Debug extends LowBobPanel implements LowBobMouseEvent {
         // temp stuff
         SC_S_Boomer boomer = new SC_S_Boomer(200,200,36,36);
         this.addSprite(boomer);
+
+        // add MenuController
+        this.addSprite(new SC_S_MenuController(0,0,0,0));
 
     }
 
