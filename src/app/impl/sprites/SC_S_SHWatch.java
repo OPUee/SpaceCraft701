@@ -14,6 +14,8 @@ public class SC_S_SHWatch extends LowBobSprite {
     private int regain_counter;
     private boolean values_changed;
 
+    private SC_M_GameOver gameover_menu;
+
     public SC_S_SHWatch(double x, double y, double width, double height) {
         super(x, y, width, height);
 
@@ -39,6 +41,8 @@ public class SC_S_SHWatch extends LowBobSprite {
 
         this.regain_counter = 0;
         this.values_changed = false;
+
+        this.gameover_menu = new SC_M_GameOver(0,0,0,0);
 
     }
 
@@ -70,6 +74,11 @@ public class SC_S_SHWatch extends LowBobSprite {
                     this.addSprite(hBar[i]);
                 if (this.shield_val > i)
                     this.addSprite(sBar[i]);
+            }
+
+            if (this.health_val <= 0) {
+                //YOU ARE DEAD
+                this.gameover_menu.show_menu();
             }
 
             this.values_changed = false;
