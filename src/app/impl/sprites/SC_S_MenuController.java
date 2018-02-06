@@ -95,7 +95,7 @@ public class SC_S_MenuController extends LowBobSprite {
             resume_btn.addMouseListener(resume_event);
             exit_btn.addMouseListener(paused_event);
 
-    }
+        }
 
         @Override
         public void loadImage() {
