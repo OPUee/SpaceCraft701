@@ -101,10 +101,12 @@ public class LowBobRuntime implements Runnable {
 
         while (true) {
 
-            if (this.runtimestate == RuntimeState.RUNNING)
-                update(lbp.getSprites());
-            collide(lbp.getSprites());
-            lbp.repaint();
+            if (this.lbp != null) {
+                if (this.runtimestate == RuntimeState.RUNNING)
+                    update(lbp.getSprites());
+                collide(lbp.getSprites());
+                lbp.repaint();
+            }
 
             timeDiff = System.currentTimeMillis() - beforeTime;
             sleep = DELAY - timeDiff;
