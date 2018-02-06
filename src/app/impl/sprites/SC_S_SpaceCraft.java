@@ -203,7 +203,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		if(lc_cnt >= LASER_COOLDOWN) {
 			LowBobRuntime.getInstance().addSprite(new SC_S_Laser(this.x + 30, this.y + 20, 8, 2));
 			lc_cnt = 0;
-			this.audio.play();
+			//this.audio.play();
 		}
 	}
 

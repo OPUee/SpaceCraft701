@@ -19,6 +19,7 @@ public class SC_S_Alien extends LowBobSprite {
     private static int SHOOTING_RATE = 80;
     private static int SHAKING_NUM = 200;
     private static int SHAKING_INT = 50;
+    private static int SPEED = 6;
 
     private int health;
     private LowBobParticleSystem sparks;
@@ -66,7 +67,7 @@ public class SC_S_Alien extends LowBobSprite {
     public void move() {
         this.shooting_counter++;
 
-        this.x -= 7;
+        this.x -= SPEED;
         // despawn
         if(this.x < -50)
         	LowBobRuntime.getInstance().removeSprite(this);
