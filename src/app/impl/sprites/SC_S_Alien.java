@@ -46,7 +46,6 @@ public class SC_S_Alien extends LowBobSprite {
         double offset = 2 * Math.PI / SHAKING_NUM;
         for (int i = 0; i < SHAKING_NUM; i++) {
             shacking_values[i] = Math.cos(i * offset) * SHAKING_INT;
-            System.out.print(shacking_values[i] + ",");
         }
 
         // initialize particle system for spark bursts

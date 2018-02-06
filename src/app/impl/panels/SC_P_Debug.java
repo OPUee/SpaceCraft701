@@ -14,7 +14,7 @@ import java.util.Random;
 /**
  * Created by opuee on 24.04.17.
  */
-public class SC_P_Debug extends LowBobPanel implements LowBobMouseEvent {
+public class SC_P_Debug extends LowBobPanel {
 	
 	private Random rnd;
 
@@ -51,27 +51,7 @@ public class SC_P_Debug extends LowBobPanel implements LowBobMouseEvent {
         text.setText("Space  Craft 701  alpha  build  0.32");
         this.addUI(text);
 
-        LowBobButtonUI button_exit = new LowBobButtonUI(1170,50,180,60,"resources/pics/exit_btn.png");
-        button_exit.addMouseListener(this);
-        //this.addUI(button_exit);
-
-        // temp stuff
-        SC_S_Boomer boomer = new SC_S_Boomer(200,200,36,36);
-        this.addSprite(boomer);
-
         // add MenuController
         this.addSprite(new SC_S_MenuController(0,0,0,0));
-
-    }
-
-    @Override
-    public void onMouseClicked(Object sender, MouseEvent e) {
-        // exit UI
-        this.changePanel(this, new PanelChangedEventArgs(null));
-    }
-
-    @Override
-    public void onMousePressed(Object sender, MouseEvent e) {
-
     }
 }
