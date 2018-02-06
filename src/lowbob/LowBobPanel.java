@@ -93,7 +93,9 @@ public abstract class LowBobPanel extends JPanel {
             
             private boolean collides(LowBobUI elem, Point p) {
             	return 	!(p.x > (elem.x + elem.width) ||
-                        p.y > (elem.y + elem.height));
+                        p.y > (elem.y + elem.height) ||
+                        p.x < elem.x ||
+                        p.y < elem.y);
             }
         });
     }
