@@ -15,3 +15,6 @@ src/META-INF/*
 *.sh
 *.bat
 *.zip
+
+# temporary building stuff
+*.xcf
