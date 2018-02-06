@@ -44,6 +44,9 @@ public class LowBobRuntime implements Runnable {
     public void setLBP(LowBobPanel lbp) {
         this.lbp = lbp;
     }
+    public LowBobPanel getLBP() {
+        return this.lbp;
+    }
     public void addSprite(LowBobSprite sprite) {
         this.lbp.addSprite(sprite);
     }
