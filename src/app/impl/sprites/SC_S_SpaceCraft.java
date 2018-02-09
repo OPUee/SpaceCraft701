@@ -104,7 +104,8 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 			lc_cnt++;
 
 		// update score ui
-		this.score_ui.setText(Integer.toString(score));
+		if(this.score_ui != null)
+			this.score_ui.setText(Integer.toString(score));
 	}
 
 	@Override
