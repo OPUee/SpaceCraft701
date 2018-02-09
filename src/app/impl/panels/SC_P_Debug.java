@@ -2,6 +2,7 @@ package app.impl.panels;
 
 import app.impl.sprites.*;
 import lowbob.LowBobPanel;
+import lowbob.LowBobRuntime;
 import lowbob.UI.LowBobButtonUI;
 import lowbob.UI.LowBobTextUI;
 import lowbob.util.events.LowBobActionEvent;
@@ -19,6 +20,7 @@ public class SC_P_Debug extends LowBobPanel {
 
     private SC_M_GameOver gameover_menu;
     private SC_S_SpaceCraft player;
+    private SC_S_SHWatch watch;
 
     @Override
     public void setup() {
@@ -35,9 +37,9 @@ public class SC_P_Debug extends LowBobPanel {
         this.addSprite(this.player);
 
         // add def watch
-        SC_S_SHWatch watch = new SC_S_SHWatch(20,700,60,60);
-        this.addSprite(watch);
-        this.player.setDefWatch(watch);
+        this.watch = new SC_S_SHWatch(20,700,60,60);
+        this.addSprite(this.watch);
+        this.player.setDefWatch(this.watch);
 
         LowBobTextUI scscoreui = new LowBobTextUI(200,690,100,70, "Visitor TT1 BRK", Color.BLUE, 70);
         this.addUI(scscoreui);
@@ -66,6 +68,7 @@ public class SC_P_Debug extends LowBobPanel {
         public void onAction(Object sender) {
             player.explode();
             gameover_menu.show_menu();
+            LowBobRuntime.getInstance().removeSprite(watch);
         }
     };
 }
