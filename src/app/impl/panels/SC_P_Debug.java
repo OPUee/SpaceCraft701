@@ -49,6 +49,9 @@ public class SC_P_Debug extends LowBobPanel {
         this.addUI(text);
 
         // add MenuController
+        SC_M_GameOver gameover_menu = new SC_M_GameOver(0,0,0,0);
+        this.addSprite(gameover_menu);
         this.addSprite(new SC_S_MenuController(0,0,0,0));
+
     }
 }
