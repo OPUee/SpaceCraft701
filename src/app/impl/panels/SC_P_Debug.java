@@ -18,6 +18,7 @@ import java.util.Random;
 public class SC_P_Debug extends LowBobPanel {
 
     private SC_M_GameOver gameover_menu;
+    private SC_S_SpaceCraft player;
 
     @Override
     public void setup() {
@@ -30,17 +31,17 @@ public class SC_P_Debug extends LowBobPanel {
 
 
         // add spacecraft player
-        SC_S_SpaceCraft player = new SC_S_SpaceCraft(-60,400, 50, 50);
-        this.addSprite(player);
+        this.player = new SC_S_SpaceCraft(-60,400, 50, 50);
+        this.addSprite(this.player);
 
         // add def watch
         SC_S_SHWatch watch = new SC_S_SHWatch(20,700,60,60);
         this.addSprite(watch);
-        player.setDefWatch(watch);
+        this.player.setDefWatch(watch);
 
         LowBobTextUI scscoreui = new LowBobTextUI(200,690,100,70, "Visitor TT1 BRK", Color.BLUE, 70);
         this.addUI(scscoreui);
-        player.setScoreUI(scscoreui);
+        this.player.setScoreUI(scscoreui);
 
 
 
@@ -63,6 +64,7 @@ public class SC_P_Debug extends LowBobPanel {
     private LowBobActionEvent gameover_event = new LowBobActionEvent() {
         @Override
         public void onAction(Object sender) {
+            player.explode();
             gameover_menu.show_menu();
         }
     };

@@ -212,6 +212,13 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		LowBobRuntime.getInstance().addSprite(new SC_S_Missile(this.x + 30, this.y + 20, 32, 16));
 	}
 
+	public void explode() {
+		LowBobRuntime runtime = LowBobRuntime.getInstance();
+		this.ps.dispatch();
+		runtime.removeSprite(this);
+		runtime.addSprite(new SC_S_Explosion(this.x,this.y,0,0));
+	}
+
 	private enum ACC_State {
 		POS,
 		NEG,

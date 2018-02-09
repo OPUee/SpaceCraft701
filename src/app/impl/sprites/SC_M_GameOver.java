@@ -29,14 +29,24 @@ public class SC_M_GameOver extends LowBobSprite {
 
     public void show_menu() {
         this.menu.show();
-        LowBobRuntime.getInstance().setRuntimeState(LowBobRuntime.RuntimeState.SUSPENDED);
     }
 
     private LowBobMouseEvent restart_event = new LowBobMouseEvent() {
         @Override
         public void onMouseClicked(Object sender, MouseEvent e) {
             LowBobRuntime.getInstance().changePanel(null, new PanelChangedEventArgs(new SC_P_Debug()));
-            LowBobRuntime.getInstance().setRuntimeState(LowBobRuntime.RuntimeState.RUNNING);
+        }
+
+        @Override
+        public void onMousePressed(Object sender, MouseEvent e) {
+
+        }
+    };
+
+    private LowBobMouseEvent exit_event = new LowBobMouseEvent() {
+        @Override
+        public void onMouseClicked(Object sender, MouseEvent e) {
+            LowBobRuntime.getInstance().changePanel(null, new PanelChangedEventArgs(null));
         }
 
         @Override
@@ -48,6 +58,7 @@ public class SC_M_GameOver extends LowBobSprite {
     private class gameover_menu extends LowBobSprite {
 
         private LowBobButtonUI restart_btn;
+        private LowBobButtonUI exit_btn;
 
         private BufferedImage banner_img;
         private BufferedImage empty_img;
@@ -56,12 +67,15 @@ public class SC_M_GameOver extends LowBobSprite {
         public gameover_menu(double x, double y, double width, double height) {
             super(x, y, width, height);
 
-            restart_btn = new LowBobButtonUI(530, 420, 345, 70, "resources/pics/restart_btn.png");
+            restart_btn = new LowBobButtonUI(530, 370, 345, 70, "resources/pics/restart_btn.png");
+            exit_btn = new LowBobButtonUI(530, 450, 345, 70, "resources/pics/exit_btn.png");
+
 
             banner_img = ImageCreator.create("resources/pics/gameover_banner.png");
             empty_img = ImageCreator.create("resources/pics/empty.png");
 
             restart_btn.addMouseListener(restart_event);
+            exit_btn.addMouseListener(exit_event);
 
         }
 
@@ -73,6 +87,7 @@ public class SC_M_GameOver extends LowBobSprite {
         public void show() {
             LowBobRuntime runtime = LowBobRuntime.getInstance();
             runtime.addUI(restart_btn);
+            runtime.addUI(exit_btn);
             this.img = this.banner_img;
         }
     }
