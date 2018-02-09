@@ -34,7 +34,7 @@ public class SC_M_GameOver extends LowBobSprite {
     private LowBobMouseEvent restart_event = new LowBobMouseEvent() {
         @Override
         public void onMouseClicked(Object sender, MouseEvent e) {
-            LowBobRuntime.getInstance().getLBP().changePanel(null, new PanelChangedEventArgs(new SC_P_Debug()));
+            LowBobRuntime.getInstance().changePanel(null, new PanelChangedEventArgs(new SC_P_Debug()));
         }
 
         @Override
