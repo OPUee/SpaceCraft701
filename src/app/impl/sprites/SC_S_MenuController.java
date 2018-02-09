@@ -65,7 +65,7 @@ public class SC_S_MenuController extends LowBobSprite {
     private LowBobMouseEvent paused_event = new LowBobMouseEvent() {
         @Override
         public void onMouseClicked(Object sender, MouseEvent e) {
-            LowBobRuntime.getInstance().getLBP().changePanel(null, new PanelChangedEventArgs(null));
+            LowBobRuntime.getInstance().changePanel(null, new PanelChangedEventArgs(null));
         }
 
         @Override
