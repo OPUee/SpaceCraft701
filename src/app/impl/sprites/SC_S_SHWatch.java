@@ -3,6 +3,10 @@ package app.impl.sprites;
 import lowbob.LowBobSprite;
 import lowbob.UI.LowBobButtonUI;
 import lowbob.util.ImageCreator;
+import lowbob.util.events.LowBobActionEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SC_S_SHWatch extends LowBobSprite {
 
@@ -14,10 +18,12 @@ public class SC_S_SHWatch extends LowBobSprite {
     private int regain_counter;
     private boolean values_changed;
 
-    private SC_M_GameOver gameover_menu;
+    private List<LowBobActionEvent> actionevents;
 
     public SC_S_SHWatch(double x, double y, double width, double height) {
         super(x, y, width, height);
+
+        this.actionevents = new ArrayList<>();
 
         // add UI to watch
         hIcon = new LowBobButtonUI(0,35,32,32, "resources/pics/health_icon.png");
@@ -42,8 +48,6 @@ public class SC_S_SHWatch extends LowBobSprite {
         this.regain_counter = 0;
         this.values_changed = false;
 
-        this.gameover_menu = new SC_M_GameOver(0,0,0,0);
-
     }
 
     @Override
@@ -64,7 +68,7 @@ public class SC_S_SHWatch extends LowBobSprite {
             }
         }
 
-        // update UI
+        // update UIreturn 0;
         if (this.values_changed) {
             for (int i = 0; i < DEF_VALUE; i++) {
                 this.removeSprite(hBar[i]);
@@ -78,7 +82,9 @@ public class SC_S_SHWatch extends LowBobSprite {
 
             if (this.health_val <= 0) {
                 //YOU ARE DEAD
-                this.gameover_menu.show_menu();
+                for(LowBobActionEvent e : this.actionevents) {
+                    e.onAction(this);
+                }
             }
 
             this.values_changed = false;
@@ -99,5 +105,9 @@ public class SC_S_SHWatch extends LowBobSprite {
             this.health_val--;
             this.values_changed = true;
         }
+    }
+
+    public void addOnGameOverListener(LowBobActionEvent e) {
+        this.actionevents.add(e);
     }
 }

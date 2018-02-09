@@ -56,7 +56,7 @@ public class SC_M_GameOver extends LowBobSprite {
         public gameover_menu(double x, double y, double width, double height) {
             super(x, y, width, height);
 
-            restart_btn = new LowBobButtonUI(85, 220, 345, 70, "resources/pics/restart_btn.png");
+            restart_btn = new LowBobButtonUI(530, 420, 345, 70, "resources/pics/restart_btn.png");
 
             banner_img = ImageCreator.create("resources/pics/gameover_banner.png");
             empty_img = ImageCreator.create("resources/pics/empty.png");

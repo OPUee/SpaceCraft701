@@ -4,6 +4,7 @@ import app.impl.sprites.*;
 import lowbob.LowBobPanel;
 import lowbob.UI.LowBobButtonUI;
 import lowbob.UI.LowBobTextUI;
+import lowbob.util.events.LowBobActionEvent;
 import lowbob.util.events.LowBobMouseEvent;
 import lowbob.util.events.PanelChangedEventArgs;
 
@@ -15,6 +16,8 @@ import java.util.Random;
  * Created by opuee on 24.04.17.
  */
 public class SC_P_Debug extends LowBobPanel {
+
+    private SC_M_GameOver gameover_menu;
 
     @Override
     public void setup() {
@@ -49,9 +52,18 @@ public class SC_P_Debug extends LowBobPanel {
         this.addUI(text);
 
         // add MenuController
-        SC_M_GameOver gameover_menu = new SC_M_GameOver(0,0,0,0);
-        this.addSprite(gameover_menu);
+        this.gameover_menu = new SC_M_GameOver(0,0,0,0);
+        this.addSprite(this.gameover_menu);
         this.addSprite(new SC_S_MenuController(0,0,0,0));
 
+        watch.addOnGameOverListener(gameover_event);
+
     }
+
+    private LowBobActionEvent gameover_event = new LowBobActionEvent() {
+        @Override
+        public void onAction(Object sender) {
+            gameover_menu.show_menu();
+        }
+    };
 }
