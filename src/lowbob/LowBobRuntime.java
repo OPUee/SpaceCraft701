@@ -2,10 +2,12 @@ package lowbob;
 
 import javafx.embed.swing.JFXPanel;
 import lowbob.UI.LowBobUI;
+import lowbob.util.events.PanelChangedEventArgs;
 
-import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by opuee on 24.04.17.
@@ -13,6 +15,8 @@ import java.util.Iterator;
 public class LowBobRuntime implements Runnable {
 
     private static LowBobRuntime instance = null;
+
+    private Lock lock;
 
     private final int DELAY = 25;
     private LowBobPanel lbp;
@@ -37,15 +41,18 @@ public class LowBobRuntime implements Runnable {
         // later needed while playing sound in javafx -.-'
         final JFXPanel fxPanel = new JFXPanel();
         this.runtimestate = RuntimeState.RUNNING;
+        this.lock = new ReentrantLock();
     }
 
     public void setRuntimeState(RuntimeState state) { this.runtimestate = state; }
 
     public void setLBP(LowBobPanel lbp) {
+        this.lock.lock();
         this.lbp = lbp;
+        this.lock.unlock();
     }
-    public LowBobPanel getLBP() {
-        return this.lbp;
+    public void changePanel(Object sender, PanelChangedEventArgs e) {
+        this.lbp.changePanel(sender, e);
     }
     public void addSprite(LowBobSprite sprite) {
         this.lbp.addSprite(sprite);
@@ -101,12 +108,15 @@ public class LowBobRuntime implements Runnable {
 
         while (true) {
 
-            if (this.lbp != null) {
-                if (this.runtimestate == RuntimeState.RUNNING)
-                    update(lbp.getSprites());
-                collide(lbp.getSprites());
-                lbp.repaint();
-            }
+            this.lock.lock();
+
+            if (this.runtimestate == RuntimeState.RUNNING)
+                update(lbp.getSprites());
+            collide(lbp.getSprites());
+            lbp.repaint();
+
+            this.lock.unlock();
+
 
             timeDiff = System.currentTimeMillis() - beforeTime;
             sleep = DELAY - timeDiff;
