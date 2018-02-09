@@ -4,8 +4,6 @@ import lowbob.util.ImageCreator;
 import lowbob.util.events.LowBobMouseEvent;
 
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**

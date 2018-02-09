@@ -22,7 +22,7 @@ public class SC_S_MenuController extends LowBobSprite {
         this.suspended = false;
 
         menu = new pause_menu(0,0,0,0);
-        this.addSprite(menu);
+        this.addSprite(this.menu);
     }
 
     @Override
