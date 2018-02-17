@@ -39,8 +39,8 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	private LowBobAudio audio;
 
-	public SC_S_SpaceCraft(double x, double y, double width, double height) {
-		super(x, y, width, height);
+	public SC_S_SpaceCraft(double x, double y, double width, double height, int z) {
+		super(x, y, width, height, z);
 
 		xAcc = ACC_State.IDLE;
 		yAcc = ACC_State.IDLE;
@@ -49,15 +49,15 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		this.audio = new LowBobAudio("resources/sounds/laser.wav");
 
 		// add thurster
-		thurster = new SC_S_Thurster(-16, 18, 15, 7);
-		light = new LowBobSimpleLight(-45,2,80,40, 0.7, 1, new Color(0xff, 78, 43));
+		thurster = new SC_S_Thurster(-16, 18, 15, 7, 3);
+		light = new LowBobSimpleLight(-45,2,80,40, 3, 0.7, 1, new Color(0xff, 78, 43));
 		this.addSprite(thurster);
 		this.addSprite(light);
 
 		// add particlesystem
-		LowBobSimpleLight light = new LowBobSimpleLight(0,0,13,13,0.7,1,new Color(255, 133, 6));
+		LowBobSimpleLight light = new LowBobSimpleLight(0,0,13,13, 3,0.7,1,new Color(255, 133, 6));
 		LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(-10,0));
-		ps = new LowBobParticleSystem(-8,17,light,20,pdb,5, 1);
+		ps = new LowBobParticleSystem(-8,17, 3, light,20,pdb,5, 1);
 		ps.Start();
 		this.addSprite(ps);
 
@@ -202,21 +202,21 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	private void fire() {
 		if(lc_cnt >= LASER_COOLDOWN) {
-			LowBobRuntime.getInstance().addSprite(new SC_S_Laser(this.x + 30, this.y + 20, 8, 2));
+			LowBobRuntime.getInstance().addSprite(new SC_S_Laser(this.x + 30, this.y + 20, 8, 2, 3));
 			lc_cnt = 0;
 			//this.audio.play();
 		}
 	}
 
 	private void launch_missile() {
-		LowBobRuntime.getInstance().addSprite(new SC_S_Missile(this.x + 30, this.y + 20, 32, 16));
+		LowBobRuntime.getInstance().addSprite(new SC_S_Missile(this.x + 30, this.y + 20, 32, 16, 3));
 	}
 
 	public void explode() {
 		LowBobRuntime runtime = LowBobRuntime.getInstance();
 		this.ps.dispatch();
 		runtime.removeSprite(this);
-		runtime.addSprite(new SC_S_Explosion(this.x,this.y,0,0));
+		runtime.addSprite(new SC_S_Explosion(this.x,this.y,0,0, 3));
 	}
 
 	private enum ACC_State {

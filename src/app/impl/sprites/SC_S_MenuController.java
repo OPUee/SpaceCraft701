@@ -16,12 +16,12 @@ public class SC_S_MenuController extends LowBobSprite {
     private boolean suspended;
     private pause_menu menu;
 
-    public SC_S_MenuController(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public SC_S_MenuController(double x, double y, double width, double height, int z) {
+        super(x, y, width, height, z);
 
         this.suspended = false;
 
-        menu = new pause_menu(0,0,0,0);
+        menu = new pause_menu(0,0,0,0, 0);
         this.addSprite(this.menu);
     }
 
@@ -83,11 +83,11 @@ public class SC_S_MenuController extends LowBobSprite {
         private BufferedImage empty_img;
 
 
-        public pause_menu(double x, double y, double width, double height) {
-            super(x, y, width, height);
+        public pause_menu(double x, double y, double width, double height, int z) {
+            super(x, y, width, height, z);
 
-            resume_btn = new LowBobButtonUI(85,220, 345,70, "resources/pics/resume_btn.png");
-            exit_btn = new LowBobButtonUI(85,300, 345,70, "resources/pics/exit_btn.png");
+            resume_btn = new LowBobButtonUI(85,220, 345,70, 1, "resources/pics/resume_btn.png");
+            exit_btn = new LowBobButtonUI(85,300, 345,70, 1,"resources/pics/exit_btn.png");
 
             banner_img = ImageCreator.create("resources/pics/pausemenu_banner.png");
             empty_img = ImageCreator.create("resources/pics/empty.png");

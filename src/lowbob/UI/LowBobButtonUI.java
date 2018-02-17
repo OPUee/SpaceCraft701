@@ -13,8 +13,8 @@ public class LowBobButtonUI extends LowBobUI {
 
     private ArrayList<LowBobMouseEvent> m_mouselistener;
 
-    public LowBobButtonUI(double x, double y, double width, double height, String img_path) {
-        super(x, y, width, height);
+    public LowBobButtonUI(double x, double y, double width, double height, int z, String img_path) {
+        super(x, y, width, height, z);
 
         this.m_mouselistener = new ArrayList<>();
 

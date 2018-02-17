@@ -1,6 +1,8 @@
 package lowbob;
 
+import com.sun.deploy.ui.ImageLoader;
 import lowbob.UI.LowBobUI;
+import lowbob.util.ImageCreator;
 import lowbob.util.events.PanelChangedEvent;
 import lowbob.util.events.PanelChangedEventArgs;
 
@@ -15,7 +17,7 @@ import java.util.Iterator;
  */
 public abstract class LowBobPanel extends JPanel {
 
-    private ArrayList<LowBobSprite> sprites;
+    private LowBobSprite root;
     private ArrayList<LowBobUI> ui;
     private ArrayList<PanelChangedEvent> m_panelchangedevent;
 
@@ -23,29 +25,36 @@ public abstract class LowBobPanel extends JPanel {
         setFocusable(true);
         setDoubleBuffered(true);
 
-        this.sprites = new ArrayList<LowBobSprite>();
+
+        this.root = new LowBobSprite(0,0,0,0, 0) {
+            @Override
+            public void loadImage() {
+                this.img = ImageCreator.create("resources/pics/empty.png");
+            }
+        };
+
         this.ui = new ArrayList<LowBobUI>();
         this.m_panelchangedevent = new ArrayList<>();
 
         this.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent keyEvent) {
-                for (int i = 0; i < sprites.size(); i++) {
-                    sprites.get(i).keyTyped(keyEvent);
+                for (int i = 0; i < root.getSprites().size(); i++) {
+                    root.getSprites().get(i).keyTyped(keyEvent);
                 }
             }
 
             @Override
             public void keyPressed(KeyEvent keyEvent) {
-                for (int i = 0; i < sprites.size(); i++) {
-                    sprites.get(i).keyPressed(keyEvent);
+                for (int i = 0; i < root.getSprites().size(); i++) {
+                    root.getSprites().get(i).keyPressed(keyEvent);
                 }
             }
 
             @Override
             public void keyReleased(KeyEvent keyEvent) {
-                for (int i = 0; i < sprites.size(); i++) {
-                    sprites.get(i).keyReleased(keyEvent);
+                for (int i = 0; i < root.getSprites().size(); i++) {
+                    root.getSprites().get(i).keyReleased(keyEvent);
                 }
             }
         });
@@ -137,25 +146,25 @@ public abstract class LowBobPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        draw_sprites(g, this.sprites, 0.0f, 0.0f);
+        draw_sprites(g, this.root.getSprites(), 0.0f, 0.0f);
         draw_ui(g, this.ui, 0.0f, 0.0f);
     }
 
     // getter and setter
     public void addSprite(LowBobSprite lbs) {
-        this.sprites.add(lbs);
+        this.root.addSprite(lbs);
     }
     public void removeSprite(LowBobSprite lbs) {
-        this.sprites.remove(lbs);
+        this.root.removeSprite(lbs);
     }
     public void addUI(LowBobUI lbu) { this.ui.add(lbu); }
     public void removeUI(LowBobUI lbu) { this.ui.remove(lbu); }
 
     public ArrayList<LowBobSprite> getSprites() {
-        if (this.sprites == null)
+        if (this.root.getSprites() == null)
             return null;
         else
-            return new ArrayList<LowBobSprite>(this.sprites);
+            return new ArrayList<LowBobSprite>(this.root.getSprites());
     }
 
     public void addPanelChangedListener(PanelChangedEvent listener) {

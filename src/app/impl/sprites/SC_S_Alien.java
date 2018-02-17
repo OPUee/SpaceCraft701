@@ -29,13 +29,13 @@ public class SC_S_Alien extends LowBobSprite {
     private double shacking_values[];
     private double org_y;
 
-    public SC_S_Alien(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public SC_S_Alien(double x, double y, double width, double height, int z) {
+        super(x, y, width, height, z);
 
         this.colliders.add(new LowBobCollider(SC_S_Missile.class));
         this.colliders.add(new LowBobCollider(SC_S_Laser.class));
         
-        this.addSprite(new SC_S_Alien_Thurster(45, 8, 20, 14));
+        this.addSprite(new SC_S_Alien_Thurster(45, 8, 20, 14, 1));
 
         this.health = 3;
         this.shooting_counter = 0;
@@ -50,11 +50,11 @@ public class SC_S_Alien extends LowBobSprite {
         }
 
         // initialize particle system for spark bursts
-        LowBobSimpleLight spark = new LowBobSimpleLight(0,0,20,20,1.1,1.6,new Color(0, 81,0xff));
-        LowBobSimpleLight flare = new LowBobSimpleLight(0,0,50,50,0.8,1,new Color(0, 81,0xff));
+        LowBobSimpleLight spark = new LowBobSimpleLight(0,0,20,20, 0,1.1,1.6,new Color(0, 81,0xff));
+        LowBobSimpleLight flare = new LowBobSimpleLight(0,0,50,50, 0,0.8,1,new Color(0, 81,0xff));
         spark.addSprite(flare);
         LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(0,10));
-        sparks = new LowBobParticleSystem(0,0,spark,30,pdb,-1,7);
+        sparks = new LowBobParticleSystem(0,0, 0,spark,30,pdb,-1,7);
         this.addSprite(sparks);
     }
 
@@ -92,8 +92,8 @@ public class SC_S_Alien extends LowBobSprite {
 
         if(this.health <= 0) {
             // die!!
-            runtime.addSprite(new SC_S_Plutonium(this.x + 10, this.y, 30, 32));
-            runtime.addSprite(new SC_S_Explosion(this.x + 10, this.y + 10, 30, 30));
+            runtime.addSprite(new SC_S_Plutonium(this.x + 10, this.y, 30, 32, 3));
+            runtime.addSprite(new SC_S_Explosion(this.x + 10, this.y + 10, 30, 30, 3));
             this.sparks.dispatch();
             runtime.removeSprite(this);
         } else {
@@ -108,11 +108,11 @@ public class SC_S_Alien extends LowBobSprite {
             public void run() {
                 try {
                     LowBobRuntime runtime = LowBobRuntime.getInstance();
-                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2));
+                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2, 3));
                     Thread.sleep(160);
-                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2));
+                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2, 3));
                     Thread.sleep(160);
-                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2));
+                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2, 3));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

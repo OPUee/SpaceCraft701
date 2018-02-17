@@ -16,8 +16,8 @@ public class SC_S_Star extends LowBobSprite{
     private boolean isHitten;
     private ValueAnimator va_idle, va_hitten;
 
-    public SC_S_Star(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public SC_S_Star(double x, double y, double width, double height, int z) {
+        super(x, y, width, height, z);
 
         this.colliders.add(new LowBobCollider(SC_S_Laser.class));
 

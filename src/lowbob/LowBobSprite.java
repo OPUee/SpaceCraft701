@@ -12,15 +12,16 @@ import java.util.ArrayList;
 public abstract class LowBobSprite {
 
     protected BufferedImage img;
-    protected double x, y, vx, vy, abs_x, abs_y, width, height;
+    protected double x, y, z, vx, vy, abs_x, abs_y, width, height;
     protected ArrayList<LowBobSprite> sprites;
     protected ArrayList<LowBobCollider> colliders;
 
-    public LowBobSprite(double x, double y, double width, double height) {
+    public LowBobSprite(double x, double y, double width, double height, int z) {
         loadImage();
 
         this.x = x;
         this.y = y;
+        this.z = z;
         this.abs_x = x;
         this.abs_y = y;
         this.width = width;
@@ -28,6 +29,20 @@ public abstract class LowBobSprite {
         colliders = new ArrayList<LowBobCollider>();
         sprites = new ArrayList<LowBobSprite>();
     }
+
+    /*public LowBobSprite(double x, double y, double width, double height) {
+        loadImage();
+
+        this.x = x;
+        this.y = y;
+        this.z = 1;
+        this.abs_x = x;
+        this.abs_y = y;
+        this.width = width;
+        this.height = height;
+        colliders = new ArrayList<LowBobCollider>();
+        sprites = new ArrayList<LowBobSprite>();
+    }*/
 
     // member functions
     public abstract void loadImage();
@@ -48,7 +63,18 @@ public abstract class LowBobSprite {
 
     // getter and setter
     public void addSprite(LowBobSprite lbs) {
-    	this.sprites.add(lbs);
+
+        int index = 0;
+
+        for (LowBobSprite s : this.sprites) {
+            if (s.getZValue() > lbs.getZValue())
+                break;
+            else
+                index++;
+        }
+
+    	this.sprites.add(index, lbs);
+        //this.sprites.add(lbs);
     }
     public void removeSprite(LowBobSprite lbs) {
     	this.sprites.remove(lbs);
@@ -59,6 +85,7 @@ public abstract class LowBobSprite {
     public double getPosY() {
         return this.y;
     }
+    public double getZValue() { return this.z; }
     public double getAbsX() {
         return this.abs_x;
     }
@@ -74,4 +101,9 @@ public abstract class LowBobSprite {
     }
     public ArrayList<LowBobCollider> getColliders() { return this.colliders; }
     public ArrayList<LowBobSprite> getSprites() { return this.sprites; }
+
+    // sub - z - system
+    private static void applySubZValue(LowBobSprite lbs) {
+
+    }
 }

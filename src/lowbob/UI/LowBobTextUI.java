@@ -15,8 +15,8 @@ public class LowBobTextUI extends LowBobUI{
     private Color color;
     private int fontsize;
 
-    public LowBobTextUI(double x, double y, double width, double height, String fontfamily, Color color, int fontsize) {
-        super(x, y, width, height);
+    public LowBobTextUI(double x, double y, double width, double height, int z, String fontfamily, Color color, int fontsize) {
+        super(x, y, width, height, z);
 
         this.text = "test";
         this.content = "";

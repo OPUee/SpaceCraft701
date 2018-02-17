@@ -17,10 +17,10 @@ public class SC_S_Plutonium extends LowBobSprite {
 
     private LowBobSimpleLight light;
 
-    public SC_S_Plutonium(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public SC_S_Plutonium(double x, double y, double width, double height, int z) {
+        super(x, y, width, height, z);
 
-        this.light = new LowBobSimpleLight(-26,-24,80,80,0.5,0.9,new Color(13,0xff, 11));
+        this.light = new LowBobSimpleLight(-26,-24,80,80, 0,0.5,0.9,new Color(13,0xff, 11));
         this.counter = 0;
 
         this.addSprite(this.light);

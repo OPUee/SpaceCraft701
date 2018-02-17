@@ -20,14 +20,14 @@ public class SC_S_SHWatch extends LowBobSprite {
 
     private List<LowBobActionEvent> actionevents;
 
-    public SC_S_SHWatch(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public SC_S_SHWatch(double x, double y, double width, double height, int z) {
+        super(x, y, width, height, z);
 
         this.actionevents = new ArrayList<>();
 
         // add UI to watch
-        hIcon = new LowBobButtonUI(0,35,32,32, "resources/pics/health_icon.png");
-        sIcon = new LowBobButtonUI(0,0,32,32, "resources/pics/shield_icon.png");
+        hIcon = new LowBobButtonUI(0,35,32,32, 0, "resources/pics/health_icon.png");
+        sIcon = new LowBobButtonUI(0,0,32,32, 0, "resources/pics/shield_icon.png");
         hBar = new LowBobButtonUI[DEF_VALUE];
         sBar = new LowBobButtonUI[DEF_VALUE];
 
@@ -35,8 +35,8 @@ public class SC_S_SHWatch extends LowBobSprite {
         this.addSprite(sIcon);
 
         for (int i = 0; i < DEF_VALUE; i++) {
-            hBar[i] = new LowBobButtonUI(i * 25 + 45,35,22,32, "resources/pics/health.png");
-            sBar[i] = new LowBobButtonUI(i * 25 + 45,0,22,32, "resources/pics/shield.png");
+            hBar[i] = new LowBobButtonUI(i * 25 + 45,35,22,32, 0, "resources/pics/health.png");
+            sBar[i] = new LowBobButtonUI(i * 25 + 45,0,22,32, 0, "resources/pics/shield.png");
 
             this.addSprite(hBar[i]);
             this.addSprite(sBar[i]);

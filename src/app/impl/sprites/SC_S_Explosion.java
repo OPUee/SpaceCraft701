@@ -12,8 +12,8 @@ public class SC_S_Explosion extends LowBobSprite {
 	private ImageAnimator ai;
 	private int counter;
 	
-	public SC_S_Explosion(double x, double y, double width, double height) {
-		super(x, y, width, height);
+	public SC_S_Explosion(double x, double y, double width, double height, int z) {
+		super(x, y, width, height, z);
 		
 		counter = 0;
 	}

@@ -13,8 +13,8 @@ public class SC_S_Coin extends LowBobSprite {
 	ImageAnimator ia;
 	int counter;
 
-	public SC_S_Coin(double x, double y, double width, double height) {
-		super(x, y, width, height);
+	public SC_S_Coin(double x, double y, double width, double height, int z) {
+		super(x, y, width, height, z);
 		
 		counter = 0;
 	}

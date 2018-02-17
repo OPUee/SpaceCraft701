@@ -15,10 +15,10 @@ public class SC_S_Alien_Laser extends LowBobSprite {
     private int SPEED = 20;
     private LowBobSimpleLight light;
 
-    public SC_S_Alien_Laser(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public SC_S_Alien_Laser(double x, double y, double width, double height, int z) {
+        super(x, y, width, height, z);
 
-        light = new LowBobSimpleLight(-45,-17,100,35,0.6,1.5,new Color(240, 0, 255));
+        light = new LowBobSimpleLight(-45,-17,100,35, 0,0.6,1.5,new Color(240, 0, 255));
         this.addSprite(light);
     }
 

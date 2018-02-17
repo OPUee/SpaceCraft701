@@ -16,13 +16,13 @@ public class SC_S_EMP extends LowBobSprite {
     private int ai_counter;
     private double slope;
 
-    public SC_S_EMP(double x, double y, double width, double height, double slope) {
-        super(x, y, width, height);
+    public SC_S_EMP(double x, double y, double width, double height, int z, double slope) {
+        super(x, y, width, height, z);
 
         this.ai_counter = 0;
         this.slope = slope;
 
-        LowBobSimpleLight backlight = new LowBobSimpleLight(-22,-22,70,70,.6,.8, new Color(0, 99, 255));
+        LowBobSimpleLight backlight = new LowBobSimpleLight(-22,-22,70,70, 3,.6,.8, new Color(0, 99, 255));
         this.addSprite(backlight);
     }
 

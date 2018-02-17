@@ -12,8 +12,8 @@ public class SC_S_AlienSpawner extends LowBobSprite{
 	private Random rnd;
 	private int counter;
 	
-	public SC_S_AlienSpawner(double x, double y, double width, double height) {
-		super(x, y, width, height);
+	public SC_S_AlienSpawner(double x, double y, double width, double height, int z) {
+		super(x, y, width, height, z);
 		
 		this.rnd = new Random();
 		this.counter = 0;
@@ -36,6 +36,6 @@ public class SC_S_AlienSpawner extends LowBobSprite{
 	
 	private void spawn_alien() {
 		int ypos = rnd.nextInt(600) + 100;
-		LowBobRuntime.getInstance().addSprite(new SC_S_Alien(1500, ypos, 50, 26));
+		LowBobRuntime.getInstance().addSprite(new SC_S_Alien(1500, ypos, 50, 26, 3));
 	}
 }

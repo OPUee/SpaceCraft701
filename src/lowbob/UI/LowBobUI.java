@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public abstract class LowBobUI extends LowBobSprite {
 	protected ArrayList<LowBobUI> elements;
 	
-    public LowBobUI(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public LowBobUI(double x, double y, double width, double height, int z) {
+        super(x, y, width, height, z);
         
         this.elements = new ArrayList<>();
     }

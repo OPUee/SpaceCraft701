@@ -19,8 +19,8 @@ public class SC_S_Boomer extends LowBobSprite {
     private int counter, offset;
     private Random rnd;
 
-    public SC_S_Boomer(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public SC_S_Boomer(double x, double y, double width, double height, int z) {
+        super(x, y, width, height, z);
 
         rnd = new Random();
 
@@ -61,10 +61,10 @@ public class SC_S_Boomer extends LowBobSprite {
 
     private void shoot() {
         LowBobRuntime runtime = LowBobRuntime.getInstance();
-        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x,y + 10,27,27, 0));
-        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x + 10,y + 10,27,27, 0.5));
-        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x + 10,y + 10,27,27, -0.5));
-        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x + 20,y + 10,27,27, 1));
-        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x + 20,y + 10,27,27, -1));
+        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x,y + 10,27,27, 3, 0));
+        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x + 10,y + 10,27,27, 3, 0.5));
+        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x + 10,y + 10,27,27, 3, -0.5));
+        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x + 20,y + 10,27,27, 3, 1));
+        LowBobRuntime.getInstance().addSprite(new SC_S_EMP(x + 20,y + 10,27,27, 3, -1));
     }
 }

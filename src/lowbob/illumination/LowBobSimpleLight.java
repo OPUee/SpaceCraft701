@@ -17,8 +17,8 @@ public class LowBobSimpleLight extends LowBobSprite {
 
     private int THRESH = 4;
 
-    public LowBobSimpleLight(double x, double y, int width, int height, double intensity, double brightness, Color color) {
-        super(x, y, width, height);
+    public LowBobSimpleLight(double x, double y, int width, int height, int z, double intensity, double brightness, Color color) {
+        super(x, y, width, height, z);
 
         //TODO: create image by matrix
         this.img = new BufferedImage((int)width, (int)height, BufferedImage.TYPE_INT_ARGB);

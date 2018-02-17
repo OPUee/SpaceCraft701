@@ -1,5 +1,8 @@
 package app.impl.panels;
 
+import app.impl.sprites.SC_S_Coin;
+import app.impl.sprites.SC_S_Star;
+import app.impl.sprites.SC_S_Thurster;
 import lowbob.LowBobPanel;
 import lowbob.UI.LowBobButtonUI;
 import lowbob.UI.LowBobTextUI;
@@ -17,13 +20,13 @@ public class SC_P_Title extends LowBobPanel implements LowBobMouseEvent {
     @Override
     public void setup() {
         // init panel
-        setBackground(new Color(0x02, 17, 33));
+        setBackground(new Color(99, 17, 33));
         setPreferredSize(new Dimension(700, 800));
 
-        LowBobButtonUI background = new LowBobButtonUI(0,0,700,800, "resources/pics/title_background.png");
-        LowBobButtonUI img_title = new LowBobButtonUI(100,100,168,102,"resources/pics/title_big.png");
-        LowBobButtonUI start_btn = new LowBobButtonUI(120,500,471,111,"resources/pics/start_btn.png");
-        LowBobTextUI txt_info = new LowBobTextUI(125,430,470,40,"Visitor TT1 BRK",Color.red,19);
+        LowBobButtonUI background = new LowBobButtonUI(0,0,700,800, 0, "resources/pics/title_background.png");
+        LowBobButtonUI img_title = new LowBobButtonUI(100,100,168,102, 1,"resources/pics/title_big.png");
+        LowBobButtonUI start_btn = new LowBobButtonUI(120,500,471,111, 1,"resources/pics/start_btn.png");
+        LowBobTextUI txt_info = new LowBobTextUI(125,430,470,40, 1,"Visitor TT1 BRK",Color.red,19);
 
         start_btn.addMouseListener(this);
 

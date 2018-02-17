@@ -25,9 +25,9 @@ public class LowBobParticleSystem extends LowBobSprite{
     private boolean isRunning;
     private boolean isDispatched;
 
-    public LowBobParticleSystem(double x, double y, LowBobSprite sprite, int maxlifetime,
+    public LowBobParticleSystem(double x, double y, int z, LowBobSprite sprite, int maxlifetime,
                                 LowBobParticleBehavior particlebehavior, int spawntime, int spawncount) {
-        super(x, y, 0, 0);
+        super(x, y, 0, 0, z);
 
         this.m_rnd = new Random();
         this.m_particles = new ArrayList<>();
@@ -100,7 +100,7 @@ public class LowBobParticleSystem extends LowBobSprite{
             velocity.x = -this.m_velovariant + this.m_rnd.nextFloat() * (this.m_velovariant * 2);
             velocity.y = -this.m_velovariant + this.m_rnd.nextFloat() * (this.m_velovariant * 2);
 
-            LowBobParticle particle = new LowBobParticle(this.abs_x, this.abs_y, velocity, m_sprite);
+            LowBobParticle particle = new LowBobParticle(this.abs_x, this.abs_y, 0, velocity, m_sprite);
 
             // add particle to system
             this.m_particles.add(particle);

@@ -11,8 +11,8 @@ public class SC_S_Thurster extends LowBobSprite {
 	private ImageAnimator ai_thurster;
 	private int ai_counter;
 
-	public SC_S_Thurster(double x, double y, double width, double height) {
-		super(x, y, width, height);
+	public SC_S_Thurster(double x, double y, double width, double height, int z) {
+		super(x, y, width, height, z);
 		
 		this.ai_counter = 0;
 	}

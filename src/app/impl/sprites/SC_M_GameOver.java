@@ -15,10 +15,10 @@ public class SC_M_GameOver extends LowBobSprite {
 
     private gameover_menu menu;
 
-    public SC_M_GameOver(double x, double y, double width, double height) {
-        super(x, y, width, height);
+    public SC_M_GameOver(double x, double y, double width, double height, int z) {
+        super(x, y, width, height, z);
 
-        this.menu = new gameover_menu(0,0,0,0);
+        this.menu = new gameover_menu(0,0,0,0, 0);
         this.addSprite(this.menu);
     }
 
@@ -64,11 +64,11 @@ public class SC_M_GameOver extends LowBobSprite {
         private BufferedImage empty_img;
 
 
-        public gameover_menu(double x, double y, double width, double height) {
-            super(x, y, width, height);
+        public gameover_menu(double x, double y, double width, double height, int z) {
+            super(x, y, width, height, z);
 
-            restart_btn = new LowBobButtonUI(530, 370, 345, 70, "resources/pics/restart_btn.png");
-            exit_btn = new LowBobButtonUI(530, 450, 345, 70, "resources/pics/exit_btn.png");
+            restart_btn = new LowBobButtonUI(530, 370, 345, 70, 1, "resources/pics/restart_btn.png");
+            exit_btn = new LowBobButtonUI(530, 450, 345, 70, 1, "resources/pics/exit_btn.png");
 
 
             banner_img = ImageCreator.create("resources/pics/gameover_banner.png");
