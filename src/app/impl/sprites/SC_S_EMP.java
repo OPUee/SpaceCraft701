@@ -22,7 +22,7 @@ public class SC_S_EMP extends LowBobSprite {
         this.ai_counter = 0;
         this.slope = slope;
 
-        LowBobSimpleLight backlight = new LowBobSimpleLight(-13,-13,50,50,.8,1, new Color(0, 99, 255));
+        LowBobSimpleLight backlight = new LowBobSimpleLight(-22,-22,70,70,.6,.8, new Color(0, 99, 255));
         this.addSprite(backlight);
     }
 
