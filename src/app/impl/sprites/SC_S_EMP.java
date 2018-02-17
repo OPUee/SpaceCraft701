@@ -1,5 +1,6 @@
 package app.impl.sprites;
 
+import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.illumination.LowBobSimpleLight;
 import lowbob.util.ImageAnimator;
@@ -21,7 +22,7 @@ public class SC_S_EMP extends LowBobSprite {
         this.ai_counter = 0;
         this.slope = slope;
 
-        LowBobSimpleLight backlight = new LowBobSimpleLight(-13,-13,50,50,.8,1, new Color(240, 0, 255));
+        LowBobSimpleLight backlight = new LowBobSimpleLight(-13,-13,50,50,.8,1, new Color(0, 99, 255));
         this.addSprite(backlight);
     }
 
@@ -45,6 +46,9 @@ public class SC_S_EMP extends LowBobSprite {
         this.x += SPEED;
         this.y += this.slope;
 
+        // despawn
+        if (this.x < -50)
+            LowBobRuntime.getInstance().removeSprite(this);
 
     }
 }
