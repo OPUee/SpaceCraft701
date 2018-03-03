@@ -3,15 +3,10 @@ package app.impl.panels;
 import app.impl.sprites.*;
 import lowbob.LowBobPanel;
 import lowbob.LowBobRuntime;
-import lowbob.UI.LowBobButtonUI;
 import lowbob.UI.LowBobTextUI;
 import lowbob.util.events.LowBobActionEvent;
-import lowbob.util.events.LowBobMouseEvent;
-import lowbob.util.events.PanelChangedEventArgs;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.util.Random;
 
 /**
  * Created by opuee on 24.04.17.
@@ -63,7 +58,7 @@ public class SC_P_Debug extends LowBobPanel {
         // add MenuController
         this.gameover_menu = new SC_M_GameOver(0,0,0,0, 10);
         this.addSprite(this.gameover_menu);
-        this.addSprite(new SC_S_MenuController(0,0,0,0, 10));
+        this.addSprite(new SC_M_MenuController(0,0,0,0, 10));
 
         watch.addOnGameOverListener(gameover_event);
 
