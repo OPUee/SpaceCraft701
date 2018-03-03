@@ -11,12 +11,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
-public class SC_S_MenuController extends LowBobSprite {
+public class SC_M_MenuController extends LowBobSprite {
 
     private boolean suspended;
     private pause_menu menu;
 
-    public SC_S_MenuController(double x, double y, double width, double height, int z) {
+    public SC_M_MenuController(double x, double y, double width, double height, int z) {
         super(x, y, width, height, z);
 
         this.suspended = false;
