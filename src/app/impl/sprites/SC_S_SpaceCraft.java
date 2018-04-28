@@ -67,6 +67,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		// collider
 		this.colliders.add(new LowBobCollider(SC_S_Plutonium.class));
 		this.colliders.add(new LowBobCollider(SC_S_Alien_Laser.class));
+		this.colliders.add(new LowBobCollider(SC_S_EMP.class));
 	}
 
 	@Override
@@ -152,11 +153,12 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 	public void collide(LowBobSprite lbs) {
 		if(lbs instanceof SC_S_Plutonium) {
             score++;
-            LowBobRuntime.getInstance().removeSprite(lbs);
         } else if (lbs instanceof SC_S_Alien_Laser) {
 		    this.def_watch.decrease();
-            LowBobRuntime.getInstance().removeSprite(lbs);
-        }
+        } else if (lbs instanceof  SC_S_EMP) {
+			this.def_watch.destroy_shield();
+		}
+		LowBobRuntime.getInstance().removeSprite(lbs);
 	}
 
 	// internal member functions

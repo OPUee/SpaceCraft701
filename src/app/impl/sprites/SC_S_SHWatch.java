@@ -11,7 +11,7 @@ import java.util.List;
 public class SC_S_SHWatch extends LowBobSprite {
 
     private static int DEF_VALUE = 5;
-    private static int REGAIN = 100;
+    private static int REGAIN = 300;
 
     private LowBobButtonUI hIcon, sIcon, hBar[], sBar[];
     private int health_val, shield_val;
@@ -105,6 +105,11 @@ public class SC_S_SHWatch extends LowBobSprite {
             this.health_val--;
             this.values_changed = true;
         }
+    }
+
+    public void destroy_shield() {
+        this.shield_val = 0;
+        this.values_changed = true;
     }
 
     public void addOnGameOverListener(LowBobActionEvent e) {
