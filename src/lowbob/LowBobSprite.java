@@ -30,20 +30,6 @@ public abstract class LowBobSprite {
         sprites = new ArrayList<LowBobSprite>();
     }
 
-    /*public LowBobSprite(double x, double y, double width, double height) {
-        loadImage();
-
-        this.x = x;
-        this.y = y;
-        this.z = 1;
-        this.abs_x = x;
-        this.abs_y = y;
-        this.width = width;
-        this.height = height;
-        colliders = new ArrayList<LowBobCollider>();
-        sprites = new ArrayList<LowBobSprite>();
-    }*/
-
     // member functions
     public abstract void loadImage();
     public void move() {}
