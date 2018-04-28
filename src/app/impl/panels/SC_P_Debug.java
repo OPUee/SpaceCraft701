@@ -46,10 +46,8 @@ public class SC_P_Debug extends LowBobPanel {
         SC_S_Boomer boomer =  new SC_S_Boomer(1200,200,0,0, 3);
         this.addSprite(boomer);
 
-
-
-        // add alien spawner
-        this.addSprite(new SC_S_AlienSpawner(0, 0, 0, 0, 0));
+        // storyline
+        SC_C_BasicStoryLine bsl = new SC_C_BasicStoryLine(0,0,0,0,0);
 
         LowBobTextUI text = new LowBobTextUI(10,10,600,40, 0, "Visitor TT1 BRK", Color.ORANGE, 20);
         text.setText("Space  Craft 701  alpha  build  0.32");

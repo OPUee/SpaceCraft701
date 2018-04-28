@@ -33,8 +33,10 @@ public class SC_C_BasicStoryLine extends LowBobSprite {
     private enum Phase {
 
         Stage1, // collecting uran
-        Stage2, // make your way to the enemy's base
-        Stage3  //
+        Stage2, // make your way to the enemy's base <The Zone>
+        Stage3, // make your way to the enemy's base <Inner Circut>
+        Stage4, // make your way to the enemy's base <The Core>
+        Stage5  // bossfight!!!
     }
 
 }
