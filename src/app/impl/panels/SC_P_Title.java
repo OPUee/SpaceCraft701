@@ -1,8 +1,5 @@
 package app.impl.panels;
 
-import app.impl.sprites.SC_S_Coin;
-import app.impl.sprites.SC_S_Star;
-import app.impl.sprites.SC_S_Thurster;
 import lowbob.LowBobPanel;
 import lowbob.UI.LowBobButtonUI;
 import lowbob.UI.LowBobTextUI;
