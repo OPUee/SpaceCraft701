@@ -1,5 +1,8 @@
 package app.impl.panels;
 
+import app.impl.controller.SC_C_BasicStoryLine;
+import app.impl.menu.SC_M_GameOver;
+import app.impl.menu.SC_M_MenuController;
 import app.impl.sprites.*;
 import lowbob.LowBobPanel;
 import lowbob.LowBobRuntime;

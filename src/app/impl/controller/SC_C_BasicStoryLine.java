@@ -1,4 +1,4 @@
-package app.impl.sprites;
+package app.impl.controller;
 
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;

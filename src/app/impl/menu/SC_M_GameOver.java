@@ -1,4 +1,4 @@
-package app.impl.sprites;
+package app.impl.menu;
 
 import app.impl.panels.SC_P_Debug;
 import lowbob.LowBobRuntime;
