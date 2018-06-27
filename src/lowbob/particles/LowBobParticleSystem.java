@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Created by opuee on 16.09.17.
  */
-public class LowBobParticleSystem extends LowBobSprite{
+public abstract class LowBobParticleSystem extends LowBobSprite{
 
     private BufferedImage m_sprite;
     private Random m_rnd;
@@ -25,7 +25,7 @@ public class LowBobParticleSystem extends LowBobSprite{
     private boolean isRunning;
     private boolean isDispatched;
 
-    public LowBobParticleSystem(double x, double y, int z, LowBobSprite sprite, int maxlifetime,
+    public LowBobParticleSystem(double x, double y, int z, int maxlifetime,
                                 LowBobParticleBehavior particlebehavior, int spawntime, int spawncount) {
         super(x, y, 0, 0, z);
 
@@ -37,7 +37,6 @@ public class LowBobParticleSystem extends LowBobSprite{
         this.isDispatched = false;
 
         this.m_particlebehavior = particlebehavior;
-        this.m_sprite = (BufferedImage) sprite.getImage();
         this.m_maxlifetime = maxlifetime;
         this.m_spawntime = spawntime;
         this.m_spawncount = spawncount;
@@ -100,7 +99,7 @@ public class LowBobParticleSystem extends LowBobSprite{
             velocity.x = -this.m_velovariant + this.m_rnd.nextFloat() * (this.m_velovariant * 2);
             velocity.y = -this.m_velovariant + this.m_rnd.nextFloat() * (this.m_velovariant * 2);
 
-            LowBobParticle particle = new LowBobParticle(this.abs_x, this.abs_y, 0, velocity, m_sprite);
+            LowBobParticle particle = instanciate(this.abs_x, this.abs_y, 0, velocity);
 
             // add particle to system
             this.m_particles.add(particle);
@@ -108,6 +107,8 @@ public class LowBobParticleSystem extends LowBobSprite{
         }
 
     }
+
+    protected abstract LowBobParticle instanciate(double x, double y, int z, Vec2d velocity);
 
     public void setVelocityVariant(float value) {
         this.m_velovariant = value;

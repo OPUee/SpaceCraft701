@@ -82,7 +82,7 @@ public abstract class LowBobSprite {
     public void setAbsY(double y) { this.abs_y = y; }
     public double getWidth() { return this.width; }
     public double getHeight() { return this.height; }
-    public Image getImage() {
+    public BufferedImage getImage() {
         return this.img;
     }
     public ArrayList<LowBobCollider> getColliders() { return this.colliders; }

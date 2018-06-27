@@ -5,6 +5,7 @@ import lowbob.LowBobCollider;
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.illumination.LowBobSimpleLight;
+import lowbob.particles.LowBobParticle;
 import lowbob.particles.LowBobParticleSystem;
 import lowbob.particles.impl.LowBobDirectedBehavior;
 import lowbob.util.ImageCreator;
@@ -50,11 +51,20 @@ public class SC_S_Alien extends LowBobSprite {
         }
 
         // initialize particle system for spark bursts
-        LowBobSimpleLight spark = new LowBobSimpleLight(0,0,20,20, 0,1.1,1.6,new Color(0, 81,0xff));
-        LowBobSimpleLight flare = new LowBobSimpleLight(0,0,50,50, 0,0.8,1,new Color(0, 81,0xff));
-        spark.addSprite(flare);
         LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(0,10));
-        sparks = new LowBobParticleSystem(0,0, 0,spark,30,pdb,-1,7);
+
+        sparks = new LowBobParticleSystem(0,0, 0,30,pdb,-1,7) {
+            @Override
+            protected LowBobParticle instanciate(double x, double y, int z, Vec2d velocity) {
+                return new LowBobParticle(x,y,0,0,z,velocity) {
+                    @Override
+                    public void loadImage() {
+                        this.img = new LowBobSimpleLight(0,0,20,20, 0,1.1,1.6,new Color(0, 81,0xff)).getImage();
+                    }
+                };
+            }
+        };
+
         this.addSprite(sparks);
     }
 

@@ -8,21 +8,15 @@ import java.awt.image.BufferedImage;
 /**
  * Created by opuee on 16.09.17.
  */
-public class LowBobParticle extends LowBobSprite {
+public abstract class LowBobParticle extends LowBobSprite {
 
-    private Vec2d m_velo;
-    private int m_lifetime;
+    protected Vec2d m_velo;
+    protected int m_lifetime;
 
-    public LowBobParticle(double x, double y, int z, Vec2d velo, BufferedImage img) {
-        super(x,y,0,0, z);
+    public LowBobParticle(double x, double y, int width, int height, int z, Vec2d velo) {
+        super(x,y,width,height, z);
         this.m_velo = velo;
         this.m_lifetime = 0;
-
-        this.img = img;
-    }
-
-    @Override
-    public void loadImage() {
     }
 
     public void setPos(Vec2d pos) {

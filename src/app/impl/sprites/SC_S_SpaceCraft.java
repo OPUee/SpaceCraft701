@@ -7,6 +7,7 @@ import lowbob.LowBobSprite;
 import lowbob.UI.LowBobTextUI;
 import lowbob.audio.LowBobAudio;
 import lowbob.illumination.LowBobSimpleLight;
+import lowbob.particles.LowBobParticle;
 import lowbob.particles.LowBobParticleSystem;
 import lowbob.particles.impl.LowBobDirectedBehavior;
 import lowbob.util.ImageCreator;
@@ -55,9 +56,20 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 		this.addSprite(light);
 
 		// add particlesystem
-		LowBobSimpleLight light = new LowBobSimpleLight(0,0,13,13, 3,0.7,1,new Color(255, 133, 6));
 		LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(-10,0));
-		ps = new LowBobParticleSystem(-8,17, 3, light,20,pdb,5, 1);
+
+		ps = new LowBobParticleSystem(-8,17, 3, 20,pdb,5, 1) {
+			@Override
+			protected LowBobParticle instanciate(double x, double y, int z, Vec2d velocity) {
+				return new LowBobParticle(x,y,0,0,z,velocity) {
+					@Override
+					public void loadImage() {
+						this.img = new LowBobSimpleLight(0,0,13,13, 3,0.7,1,new Color(255, 133, 6)).getImage();
+					}
+				};
+			}
+		};
+
 		ps.Start();
 		this.addSprite(ps);
 
