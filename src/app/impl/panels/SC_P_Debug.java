@@ -46,12 +46,22 @@ public class SC_P_Debug extends LowBobPanel {
 
 
         // boomer test
-        SC_S_Boomer boomer =  new SC_S_Boomer(1200,200,0,0, 3);
+        //SC_S_Boomer boomer =  new SC_S_Boomer(1200,200,36,36, 3);
         //this.addSprite(boomer);
 
-        SC_S_BlackHole blackHole = new SC_S_BlackHole(1200, 400, 0,0, 1);
-        this.addSprite(blackHole);
+        // alien test
+        //SC_S_Alien alien = new SC_S_Alien(1500,300, 50, 26,3);
+        //this.addSprite(alien);
 
+        // blackhole test
+        //SC_S_BlackHole blackHole = new SC_S_BlackHole(1200, 400, 0,0, 1);
+        //this.addSprite(blackHole);
+
+        // rogue test
+        //SC_S_Rouge_1 rouge = new SC_S_Rouge_1(1000, 200, 0,0,2);
+        //this.addSprite(rouge);
+
+        this.addSprite(new SC_S_AlienSpawner(0,0,0,0,0));
 
         // storyline
         SC_C_BasicStoryLine bsl = new SC_C_BasicStoryLine(0,0,0,0,0);

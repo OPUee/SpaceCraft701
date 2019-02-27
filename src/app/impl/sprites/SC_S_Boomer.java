@@ -1,5 +1,6 @@
 package app.impl.sprites;
 
+import lowbob.LowBobCollider;
 import lowbob.LowBobRuntime;
 import lowbob.LowBobSprite;
 import lowbob.util.ImageAnimator;
@@ -15,6 +16,8 @@ public class SC_S_Boomer extends LowBobSprite {
     private static int SPEED = -2;
     private static int SLOPE = 1;
 
+    private static int HP = 10;
+
     private ImageAnimator ai_booomer;
     private int counter, offset;
     private Random rnd;
@@ -26,6 +29,8 @@ public class SC_S_Boomer extends LowBobSprite {
 
         this.counter = 0;
         this.offset = rnd.nextInt(20);
+
+        this.colliders.add(new LowBobCollider(SC_S_Laser_Green.class));
     }
 
     @Override
@@ -56,6 +61,18 @@ public class SC_S_Boomer extends LowBobSprite {
         // reset counter
         if (this.counter > 10000) {
             this.counter = 0;
+        }
+    }
+
+    @Override
+    public void collide(LowBobSprite lbs) {
+        LowBobRuntime.getInstance().removeSprite(lbs);
+
+        this.HP--;
+
+        if (this.HP <= 0) {
+            LowBobRuntime.getInstance().removeSprite(this);
+            LowBobRuntime.getInstance().addSprite(new SC_S_Explosion(this.getAbsX(), this.getAbsY(), 0,0,3));
         }
     }
 

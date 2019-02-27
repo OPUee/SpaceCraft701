@@ -15,8 +15,6 @@ import lowbob.util.ImageCreator;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
-
 /**
  * Created by opuee on 24.04.17.
  */
@@ -78,7 +76,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 		// collider
 		this.colliders.add(new LowBobCollider(SC_S_Plutonium.class));
-		this.colliders.add(new LowBobCollider(SC_S_Alien_Laser.class));
+		this.colliders.add(new LowBobCollider(SC_S_Laser_Red.class));
 		this.colliders.add(new LowBobCollider(SC_S_EMP.class));
 	}
 
@@ -165,7 +163,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 	public void collide(LowBobSprite lbs) {
 		if(lbs instanceof SC_S_Plutonium) {
             score++;
-        } else if (lbs instanceof SC_S_Alien_Laser) {
+        } else if (lbs instanceof SC_S_Laser_Red) {
 		    this.def_watch.decrease();
         } else if (lbs instanceof  SC_S_EMP) {
 			this.def_watch.destroy_shield();
@@ -216,7 +214,7 @@ public class SC_S_SpaceCraft extends LowBobSprite{
 
 	private void fire() {
 		if(lc_cnt >= LASER_COOLDOWN) {
-			LowBobRuntime.getInstance().addSprite(new SC_S_Laser(this.x + 30, this.y + 20, 8, 2, 3));
+			LowBobRuntime.getInstance().addSprite(new SC_S_Laser_Green(this.x + 30, this.y + 20, 8, 2, 3));
 			lc_cnt = 0;
 			//this.audio.play();
 		}

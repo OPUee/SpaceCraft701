@@ -34,7 +34,7 @@ public class SC_S_Alien extends LowBobSprite {
         super(x, y, width, height, z);
 
         this.colliders.add(new LowBobCollider(SC_S_Missile.class));
-        this.colliders.add(new LowBobCollider(SC_S_Laser.class));
+        this.colliders.add(new LowBobCollider(SC_S_Laser_Green.class));
         
         this.addSprite(new SC_S_Alien_Thurster(45, 8, 20, 14, 1));
 
@@ -118,11 +118,11 @@ public class SC_S_Alien extends LowBobSprite {
             public void run() {
                 try {
                     LowBobRuntime runtime = LowBobRuntime.getInstance();
-                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2, 3));
+                    LowBobRuntime.getInstance().addSprite(new SC_S_Laser_Red(x,y + 10,8,2, 3));
                     Thread.sleep(160);
-                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2, 3));
+                    LowBobRuntime.getInstance().addSprite(new SC_S_Laser_Red(x,y + 10,8,2, 3));
                     Thread.sleep(160);
-                    LowBobRuntime.getInstance().addSprite(new SC_S_Alien_Laser(x,y + 10,8,2, 3));
+                    LowBobRuntime.getInstance().addSprite(new SC_S_Laser_Red(x,y + 10,8,2, 3));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
