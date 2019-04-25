@@ -59,8 +59,8 @@ public class SC_P_Debug extends LowBobPanel {
         //this.addSprite(rouge);
 
         // Dialog test
-        SC_UI_Dialog dialog = new SC_UI_Dialog();
-        this.addUI(dialog);
+        SC_UI_Dialog dialog = new SC_UI_Dialog(380,640);
+        //this.addUI(dialog);
 
         this.addSprite(new SC_S_AlienSpawner(0,0,0,0,0));
 
