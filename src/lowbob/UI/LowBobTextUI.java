@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 /**
  * Created by opuee on 02.05.17.
  */
-public class LowBobTextUI extends LowBobUI{
+public class LowBobTextUI extends LowBobSprite{
 
     private String text, content, fontfamily;
     private Color color;

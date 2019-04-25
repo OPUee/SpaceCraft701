@@ -1,7 +1,6 @@
 package lowbob;
 
 import javafx.embed.swing.JFXPanel;
-import lowbob.UI.LowBobUI;
 import lowbob.util.events.PanelChangedEventArgs;
 
 import java.util.ArrayList;
@@ -58,34 +57,29 @@ public class LowBobRuntime implements Runnable {
         this.lbp.addSprite(sprite);
     }
     public void removeSprite(LowBobSprite sprite) {this.lbp.removeSprite(sprite);}
-    public void addUI(LowBobUI lbu) { this.lbp.addUI(lbu); }
-    public void removeUI(LowBobUI lbu) { this.lbp.removeUI(lbu); }
+    public void addUI(LowBobSprite sprite) { this.lbp.addUI(sprite); }
+    public void removeUI(LowBobSprite sprite) { this.lbp.removeUI(sprite); }
 
     private void update(ArrayList<LowBobSprite> sprites) {
-        for(Iterator<LowBobSprite> s = sprites.iterator(); s.hasNext();) {
-            LowBobSprite sprite = s.next();
-
-            sprite.move();
-            update(sprite.getSprites());
+        for(int i = 0; i < sprites.size(); i++)
+        {
+            sprites.get(i).move();
+            update(sprites.get(i).getSprites());
         }
     }
 
-    private void collide(ArrayList<LowBobSprite> sprites) {
-        for(Iterator<LowBobSprite> s = sprites.iterator(); s.hasNext();) {
-            LowBobSprite sprite = s.next();
+    private void collide(LowBobSprite sprite) {
+        ArrayList<LowBobSprite> list = sprite.shrink();
 
-            // calculate colliders for each sprite individual
+        for(int i = 0; i < list.size(); i++) {
+            for(int j = i + 1; j < list.size(); j++) {
+                for(int c = 0; c < list.get(i).colliders.size(); c++)
+                {
+                    LowBobCollider collider = list.get(i).colliders.get(c);
 
-            for(Iterator<LowBobSprite> cs = sprites.iterator(); cs.hasNext();) {
-                LowBobSprite colliding_sprite = cs.next();
-                ArrayList<LowBobCollider> colliders = sprite.getColliders();
-
-                for(Iterator<LowBobCollider> c = colliders.iterator(); c.hasNext();) {
-                    LowBobCollider collider = c.next();
-
-                    if(collider.getType() == colliding_sprite.getClass()) {
-                        if(isColliding(sprite, colliding_sprite))
-                            sprite.collide(colliding_sprite);
+                    if(collider.getType() == list.get(j).getClass()) {
+                        if(isColliding(list.get(i), list.get(j)))
+                            list.get(i).collide(list.get(j));
                     }
                 }
             }
@@ -112,7 +106,7 @@ public class LowBobRuntime implements Runnable {
 
             if (this.runtimestate == RuntimeState.RUNNING)
                 update(lbp.getSprites());
-            collide(lbp.getSprites());
+            collide(lbp.getGDelements());
             lbp.repaint();
 
             this.lock.unlock();

@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by opuee on 24.04.17.
@@ -87,6 +88,19 @@ public abstract class LowBobSprite {
     }
     public ArrayList<LowBobCollider> getColliders() { return this.colliders; }
     public ArrayList<LowBobSprite> getSprites() { return this.sprites; }
+    public ArrayList<LowBobSprite> shrink() {
+        ArrayList<LowBobSprite> list = new ArrayList<>();
+
+        list.add(this);
+
+        for(Iterator<LowBobSprite> sprites = getSprites().iterator(); sprites.hasNext();) {
+            LowBobSprite sprite = sprites.next();
+
+            list.addAll(sprite.shrink());
+        }
+
+        return list;
+    }
 
     // sub - z - system
     private static void applySubZValue(LowBobSprite lbs) {

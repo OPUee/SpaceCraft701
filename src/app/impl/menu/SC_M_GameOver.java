@@ -19,7 +19,6 @@ public class SC_M_GameOver extends LowBobSprite {
         super(x, y, width, height, z);
 
         this.menu = new gameover_menu(0,0,0,0, 0);
-        this.addSprite(this.menu);
     }
 
     @Override
@@ -28,7 +27,7 @@ public class SC_M_GameOver extends LowBobSprite {
     }
 
     public void show_menu() {
-        this.menu.show();
+        this.addSprite(menu);
     }
 
     private LowBobMouseEvent restart_event = new LowBobMouseEvent() {
@@ -60,35 +59,23 @@ public class SC_M_GameOver extends LowBobSprite {
         private LowBobButtonUI restart_btn;
         private LowBobButtonUI exit_btn;
 
-        private BufferedImage banner_img;
-        private BufferedImage empty_img;
-
-
         public gameover_menu(double x, double y, double width, double height, int z) {
             super(x, y, width, height, z);
 
             restart_btn = new LowBobButtonUI(530, 370, 345, 70, 1, "resources/pics/restart_btn.png");
             exit_btn = new LowBobButtonUI(530, 450, 345, 70, 1, "resources/pics/exit_btn.png");
 
-
-            banner_img = ImageCreator.create("resources/pics/gameover_banner.png");
-            empty_img = ImageCreator.create("resources/pics/empty.png");
-
             restart_btn.addMouseListener(restart_event);
             exit_btn.addMouseListener(exit_event);
+
+            this.addSprite(restart_btn);
+            this.addSprite(exit_btn);
 
         }
 
         @Override
         public void loadImage() {
-            this.img = this.banner_img;
-        }
-
-        public void show() {
-            LowBobRuntime runtime = LowBobRuntime.getInstance();
-            runtime.addUI(restart_btn);
-            runtime.addUI(exit_btn);
-            this.img = this.banner_img;
+            this.img = ImageCreator.create("resources/pics/gameover_banner.png");
         }
     }
 }

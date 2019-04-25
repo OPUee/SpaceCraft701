@@ -1,5 +1,6 @@
 package lowbob.UI;
 
+import lowbob.LowBobSprite;
 import lowbob.util.ImageCreator;
 import lowbob.util.events.LowBobMouseEvent;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by opuee on 05.05.17.
  */
-public class LowBobButtonUI extends LowBobUI {
+public class LowBobButtonUI extends LowBobSprite {
 
     private ArrayList<LowBobMouseEvent> m_mouselistener;
 

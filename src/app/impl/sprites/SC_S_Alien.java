@@ -53,7 +53,7 @@ public class SC_S_Alien extends LowBobSprite {
         // initialize particle system for spark bursts
         LowBobDirectedBehavior pdb = new LowBobDirectedBehavior(new Vec2d(0,10));
 
-        sparks = new LowBobParticleSystem(0,0, 0,30,pdb,-1,7) {
+        sparks = new LowBobParticleSystem(0,0, 0,30,pdb,-1,10) {
             @Override
             protected LowBobParticle instanciate(double x, double y, int z, Vec2d velocity) {
                 return new LowBobParticle(x,y,0,0,z,velocity) {

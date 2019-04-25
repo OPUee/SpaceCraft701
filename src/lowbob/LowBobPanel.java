@@ -1,16 +1,14 @@
 package lowbob;
 
-import com.sun.deploy.ui.ImageLoader;
-import lowbob.UI.LowBobUI;
 import lowbob.util.ImageCreator;
 import lowbob.util.events.PanelChangedEvent;
 import lowbob.util.events.PanelChangedEventArgs;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by opuee on 24.04.17.
@@ -18,13 +16,16 @@ import java.util.Iterator;
 public abstract class LowBobPanel extends JPanel {
 
     private LowBobSprite root;
-    private ArrayList<LowBobUI> ui;
+    private LowBobSprite gd;
+    private LowBobSprite ui;
     private ArrayList<PanelChangedEvent> m_panelchangedevent;
 
     public LowBobPanel() {
         setFocusable(true);
         setDoubleBuffered(true);
 
+
+        // --- initialise basic world tree ---
 
         this.root = new LowBobSprite(0,0,0,0, 0) {
             @Override
@@ -33,28 +34,64 @@ public abstract class LowBobPanel extends JPanel {
             }
         };
 
-        this.ui = new ArrayList<LowBobUI>();
+        this.gd = new LowBobSprite(0,0,0,0, 0) {
+            @Override
+            public void loadImage() {
+                this.img = ImageCreator.create("resources/pics/empty.png");
+            }
+        };
+
+        this.ui = new LowBobSprite(0,0,0,0, 0) {
+            @Override
+            public void loadImage() {
+                this.img = ImageCreator.create("resources/pics/empty.png");
+            }
+        };
+
+        root.addSprite(gd);
+        root.addSprite(ui);
+
+        // -----------------------------------
+
         this.m_panelchangedevent = new ArrayList<>();
 
         this.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent keyEvent) {
-                for (int i = 0; i < root.getSprites().size(); i++) {
-                    root.getSprites().get(i).keyTyped(keyEvent);
+                propagadeKeyTyped(keyEvent, root);
+            }
+
+            private void propagadeKeyTyped(KeyEvent keyEvent, LowBobSprite sprite) {
+                for (int i = 0; i < sprite.getSprites().size(); i++) {
+                    LowBobSprite subsprite = sprite.getSprites().get(i);
+                    subsprite.keyTyped(keyEvent);
+                    propagadeKeyTyped(keyEvent, subsprite);
                 }
             }
 
             @Override
             public void keyPressed(KeyEvent keyEvent) {
-                for (int i = 0; i < root.getSprites().size(); i++) {
-                    root.getSprites().get(i).keyPressed(keyEvent);
+                propagadeKeyPressed(keyEvent, root);
+            }
+
+            private void propagadeKeyPressed(KeyEvent keyEvent, LowBobSprite sprite) {
+                for (int i = 0; i < sprite.getSprites().size(); i++) {
+                    LowBobSprite subsprite = sprite.getSprites().get(i);
+                    subsprite.keyPressed(keyEvent);
+                    propagadeKeyPressed(keyEvent, subsprite);
                 }
             }
 
             @Override
             public void keyReleased(KeyEvent keyEvent) {
-                for (int i = 0; i < root.getSprites().size(); i++) {
-                    root.getSprites().get(i).keyReleased(keyEvent);
+                propagadeKeyReleased(keyEvent, root);
+            }
+
+            private void propagadeKeyReleased(KeyEvent keyEvent, LowBobSprite sprite) {
+                for (int i = 0; i < sprite.getSprites().size(); i++) {
+                    LowBobSprite subsprite = sprite.getSprites().get(i);
+                    subsprite.keyReleased(keyEvent);
+                    propagadeKeyReleased(keyEvent, subsprite);
                 }
             }
         });
@@ -62,45 +99,54 @@ public abstract class LowBobPanel extends JPanel {
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
-            	for (int i = 0; i < ui.size(); i++) {
-            		LowBobUI elem = ui.get(i);
-            		
-            		if(collides(elem, mouseEvent.getPoint()))
-            			elem.mouseClicked(mouseEvent);
-            	}
+                propagadeMouseClicked(mouseEvent, root);
             }
 
-            @Override
-            public void mousePressed(MouseEvent mouseEvent) {
-            	for (int i = 0; i < ui.size(); i++) {
-            		LowBobUI elem = ui.get(i);
-            		
-            		if(collides(elem, mouseEvent.getPoint()))
-            			elem.mousePressed(mouseEvent);
-            	}
+            private void propagadeMouseClicked(MouseEvent mouseEvent, LowBobSprite sprite)
+            {
+                for (int i = 0; i < sprite.getSprites().size(); i++) {
+                    LowBobSprite subsprite = sprite.getSprites().get(i);
+
+                    if(collides(subsprite, mouseEvent.getPoint()))
+                        subsprite.mouseClicked(mouseEvent);
+
+                    propagadeMouseClicked(mouseEvent, subsprite);
+                }
             }
 
             @Override
             public void mouseReleased(MouseEvent mouseEvent) {
-            	for (int i = 0; i < ui.size(); i++) {
-            		LowBobUI elem = ui.get(i);
-            		
-            		if(collides(elem, mouseEvent.getPoint()))
-            			elem.mouseReleased(mouseEvent);
-            	}
+                propagadeMouseReleased(mouseEvent, root);
+            }
+
+            private void propagadeMouseReleased(MouseEvent mouseEvent, LowBobSprite sprite)
+            {
+                for (int i = 0; i < sprite.getSprites().size(); i++) {
+                    LowBobSprite subsprite = sprite.getSprites().get(i);
+
+                    if(collides(subsprite, mouseEvent.getPoint()))
+                        subsprite.mouseReleased(mouseEvent);
+
+                    propagadeMouseReleased(mouseEvent, subsprite);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // nothing to do right now
             }
 
             @Override
             public void mouseEntered(MouseEvent mouseEvent) {
-            	
+                // nothing to do right now
             }
 
             @Override
             public void mouseExited(MouseEvent mouseEvent) {
-            	// 
+                // nothing to do right now
             }
             
-            private boolean collides(LowBobUI elem, Point p) {
+            private boolean collides(LowBobSprite elem, Point p) {
             	return 	!(p.x > (elem.x + elem.width) ||
                         p.y > (elem.y + elem.height) ||
                         p.x < elem.x ||
@@ -128,37 +174,35 @@ public abstract class LowBobPanel extends JPanel {
         }
     }
 
-    private void draw_ui(Graphics g, ArrayList<LowBobUI> elements, double x, double y) {
-        if (elements == null)
-            return;
-
-        for (int i = 0; i < elements.size(); i++) {
-            LowBobUI element = elements.get(i);
-
-            // draw ui
-            g.drawImage(element.getImage(), (int)(element.getPosX() + x), (int)(element.getPosY() + y), this);
-            Toolkit.getDefaultToolkit().sync();
-            
-            draw_ui(g, element.getUIElements(), x + element.getPosX(), y + element.getPosY());
-        }
-    }
-
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        draw_sprites(g, this.root.getSprites(), 0.0f, 0.0f);
-        draw_ui(g, this.ui, 0.0f, 0.0f);
+        draw_sprites(g, this.gd.getSprites(), 0.0f, 0.0f);
+        draw_sprites(g, this.ui.getSprites(), 0.0f, 0.0f);
     }
 
     // getter and setter
     public void addSprite(LowBobSprite lbs) {
-        this.root.addSprite(lbs);
+        this.gd.addSprite(lbs);
+    }
+    public void addUI(LowBobSprite lbs) {
+        this.ui.addSprite(lbs);
     }
     public void removeSprite(LowBobSprite lbs) {
-        this.root.removeSprite(lbs);
+        this.gd.removeSprite(lbs);
     }
-    public void addUI(LowBobUI lbu) { this.ui.add(lbu); }
-    public void removeUI(LowBobUI lbu) { this.ui.remove(lbu); }
+    public void removeUI(LowBobSprite lbs) {
+        this.ui.removeSprite(lbs);
+    }
+    public LowBobSprite getUIelements(){
+        return this.ui;
+    }
+    public LowBobSprite getGDelements(){
+        return this.gd;
+    }
+    public LowBobSprite getAllelements(){
+        return this.root;
+    }
 
     public ArrayList<LowBobSprite> getSprites() {
         if (this.root.getSprites() == null)
